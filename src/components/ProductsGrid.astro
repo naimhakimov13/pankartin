@@ -1,0 +1,12 @@
+---
+import ProductCard from './ProductCard.astro';
+import { products } from '../data/products';
+
+// Auto-collapses to repeat(2) at ≤980px and 1fr at ≤620px (in global.css).
+// 4-col layout only when there are exactly 4 products; other counts use the
+// default 3-col grid (5 products → 3 + 2, which balances better than 4 + 1).
+const gridClass = products.length === 4 ? 'products products--4' : 'products';
+---
+<div class={gridClass}>
+  {products.map((p) => <ProductCard product={p} />)}
+</div>

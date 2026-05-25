@@ -1,0 +1,48 @@
+---
+// PanKartin-specific bar chart. Three bars with hard-coded colour ramps in
+// global.css (.bar.b1/b2/b3); this component drives heights, labels, and
+// legend from props.
+
+interface Bar {
+  /** Height percentage as a number, e.g. 76 */
+  heightPct: number;
+  /** Text rendered inside the bar (the percentage value) */
+  value: string;
+  /** Variant class: b1 | b2 | b3 */
+  variant: 'b1' | 'b2' | 'b3';
+  /** Label below the bar */
+  label: string;
+}
+
+interface LegendItem {
+  /** Inline swatch colour (hex) */
+  color: string;
+  text: string;
+}
+
+interface Props {
+  bars: Bar[];
+  legend: LegendItem[];
+  /** Optional max-width for the card */
+  maxWidth?: string;
+}
+
+const { bars, legend, maxWidth = '620px' } = Astro.props;
+---
+<div class="chart-card" style={`max-width:${maxWidth};margin-inline:auto`}>
+  <div class="bars">
+    {bars.map((b) => (
+      <div class={`bar ${b.variant}`}>
+        <div class="col" style={`height:${b.heightPct}%`}>{b.value}</div>
+      </div>
+    ))}
+  </div>
+  <div class="bar-labels">
+    {bars.map((b) => <span>{b.label}</span>)}
+  </div>
+  <ul class="legend" style="margin-top:24px">
+    {legend.map((it) => (
+      <li><span class="sw" style={`background:${it.color}`}></span> {it.text}</li>
+    ))}
+  </ul>
+</div>

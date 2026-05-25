@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PackCard from '../components/PackCard.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FuncGrid from '../components/FuncGrid.astro';
+import Compo from '../components/Compo.astro';
+import Checklist from '../components/Checklist.astro';
+import IndList from '../components/IndList.astro';
+import Split from '../components/Split.astro';
+import InfoCard from '../components/InfoCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const product = products.find((p) => p.slug === 'pan-sedil')!;
+---
+<BaseLayout
+  theme={product.theme}
+  active={product.slug}
+  productDisclaimer
+  title="Pan-Sedil — пассифлора, мелисса и боярышник для сна и спокойствия | PanPharm"
+  description="Pan-Sedil — мягкое успокаивающее средство на растительной основе с L-триптофаном, магнием и витамином B6. При нарушениях сна, неврозах и стрессе. Не вызывает привыкания."
+>
+  <ProductHero
+    product={product}
+    badge="Пассифлора · Мелисса · Боярышник · L-триптофан · Магний · B6"
+    slogan="«Спокойствие, концентрация, здоровый сон»"
+    description="Мягкое успокаивающее средство при нарушениях сна, неврозах и психоэмоциональном стрессе. Pan-Sedil облегчает наступление естественного сна и углубляет его, не вызывая привыкания."
+    primary={{ href: '#sostav', label: 'Состав капсулы' }}
+    secondary={{ href: '#dozirovka', label: 'Как принимать' }}
+  >
+    <PackCard
+      name="Pan-Sedil"
+      sub="Растительный комплекс · Не вызывает привыкания"
+      items={[
+        { name: 'Экстракт пассифлоры',     value: '150 мг' },
+        { name: 'Магний лактат дигидрат',  value: '150 мг' },
+        { name: 'Экстракт боярышника',     value: '100 мг' },
+        { name: 'Экстракт мелиссы',        value: '100 мг' },
+        { name: 'L-триптофан',             value: '50 мг'  },
+        { name: 'Витамин B6 (пиридоксин)', value: '3 мг'   },
+      ]}
+      form="Форма выпуска: 30 капсул"
+      formIcon="pill"
+    />
+  </ProductHero>
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Когда нужен Pan-Sedil"
+      title="Симптомы расстройства нервной системы"
+      lead="Если знакомы хотя бы 2–3 из этих признаков — нервной системе стоит помочь."
+    />
+    <FuncGrid
+      cols={5}
+      items={[
+        { icon: 'flame',       title: 'Раздражительность',  text: 'Повышенная чувствительность к мелочам и внешним раздражителям.' },
+        { icon: 'moon',        title: 'Проблемы со сном',   text: 'Трудности с засыпанием, поверхностный или прерывистый сон.' },
+        { icon: 'cloud',       title: 'Тревожность',         text: 'Постоянное ощущение тревоги и внутреннего напряжения.' },
+        { icon: 'battery-low', title: 'Утомляемость',        text: 'Слабость и сильная утомляемость даже без нагрузки.' },
+        { icon: 'target',      title: 'Низкая концентрация', text: 'Снижение внимания и нарушения памяти.' },
+      ]}
+    />
+  </Section>
+
+  <Section soft id="sostav">
+    <SectionHead
+      eyebrow="Состав"
+      title="Содержание в 1 капсуле"
+      lead="Растительные экстракты с доказанным успокаивающим действием в сочетании с аминокислотой, магнием и витамином B6."
+    />
+    <Compo
+      cols={3}
+      items={[
+        { value: '150 мг', label: 'Экстракт пассифлоры'    },
+        { value: '150 мг', label: 'Магний лактат дигидрат' },
+        { value: '100 мг', label: 'Экстракт боярышника'    },
+        { value: '100 мг', label: 'Экстракт мелиссы'       },
+        { value: '50 мг',  label: 'L-триптофан'            },
+        { value: '3 мг',   label: 'Витамин B6'             },
+      ]}
+    />
+    <div class="split" style="margin-top:36px">
+      <InfoCard accent title="Не вызывает привыкания">
+        <p style="color:var(--muted);margin-top:10px">
+          Растительная основа и физиологические дозы магния с витамином B6
+          обеспечивают мягкое успокаивающее действие <b>без формирования
+          зависимости</b> и без выраженной дневной сонливости.
+        </p>
+      </InfoCard>
+      <InfoCard title="Естественный сон">
+        <p style="color:var(--muted);margin-top:10px">
+          Pan-Sedil <b>не оказывает выраженного снотворного действия</b>, но
+          облегчает наступление естественного сна и углубляет его — вы
+          просыпаетесь отдохнувшим, без «тумана» в голове.
+        </p>
+      </InfoCard>
+    </div>
+  </Section>
+
+  <Section>
+    <SectionHead
+      eyebrow="Механизм действия"
+      title="Как работает Pan-Sedil"
+      lead="Pan-Sedil оказывает регулирующее влияние на функции ЦНС, усиливая тормозные и понижая возбудительные процессы."
+    />
+    <Checklist
+      items={[
+        'Мягко уменьшает психоэмоциональное напряжение',
+        'Снижает повышенную чувствительность к внешним раздражителям',
+        'Корректирует проявления вегетативной дисфункции',
+        'Облегчает наступление естественного сна и углубляет его',
+        'Усиливает действие анальгетиков и снотворных препаратов',
+        'Обладает вегетостабилизирующим действием',
+        'Повышает стрессоустойчивость и концентрацию внимания',
+        'Стимулирует мозговую деятельность в течение дня',
+      ]}
+    />
+  </Section>
+
+  <Section soft>
+    <SectionHead
+      eyebrow="Показания к применению"
+      title="Когда применяется Pan-Sedil"
+      lead="Препарат показан при нарушениях сна, вызванных умственными, физическими и нервными перегрузками."
+    />
+    <IndList
+      cols
+      items={[
+        'Нарушения сна различного генеза',
+        'Неврозы и невротические состояния',
+        'Психоэмоциональный стресс',
+        'Повышенная раздражительность',
+        'Тревожность и внутреннее напряжение',
+        'Умственные и физические перегрузки',
+        'Снижение концентрации внимания',
+        'Вегетативная дисфункция',
+      ]}
+    />
+  </Section>
+
+  <Section id="dozirovka">
+    <Split>
+      <div slot="left">
+        <span class="eyebrow">Способ применения и дозы</span>
+        <h2>Как принимать Pan-Sedil</h2>
+        <p class="lead" style="margin-top:14px">
+          Рекомендуемая суточная доза для взрослых — <b>одна капсула в день</b>.
+          Желательно принимать капсулу вечером, <b>за 30–60 минут до сна</b>,
+          чтобы улучшить сон и расслабление.
+        </p>
+        <IndList
+          style="margin-top:20px"
+          items={[
+            'Принимать по 1 капсуле в день',
+            'Лучше всего вечером, за 30–60 минут до сна',
+            'Капсулу проглатывать целиком, запивая водой',
+            'Не вызывает привыкания — подходит для повторных курсов',
+          ]}
+        />
+      </div>
+      <InfoCard slot="right" accent title="Кратко о приёме">
+        <ul class="pack-list">
+          <li><span>Суточная доза</span><b>1 капсула</b></li>
+          <li><span>Время приёма</span><b>вечером</b></li>
+          <li><span>За сколько до сна</span><b>30–60 мин</b></li>
+          <li><span>Запивать</span><b>водой</b></li>
+          <li><span>Форма выпуска</span><b>30 капсул</b></li>
+        </ul>
+      </InfoCard>
+    </Split>
+  </Section>
+
+  <CtaBand
+    title="Спокойствие днём — здоровый сон ночью"
+    description="Pan-Sedil мягко избавляет от раздражительности, повышает стрессоустойчивость и помогает восстановить естественный сон. Без привыкания."
+  >
+    <a href="/#contacts" class="btn btn-white">Где купить</a>
+    <a href="/#products" class="btn btn-outline-white">Вся продукция</a>
+  </CtaBand>
+</BaseLayout>

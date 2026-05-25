@@ -1,0 +1,22 @@
+---
+interface Item {
+  /** Bold value, e.g. "400 мг" */
+  value: string;
+  /** Muted label, e.g. "L-карнитин" */
+  label: string;
+}
+
+interface Props {
+  /** Column count — 2 (default) or 3 */
+  cols?: 2 | 3;
+  items: Item[];
+}
+
+const { cols = 2, items } = Astro.props;
+const cls = ['compo', cols === 3 && 'compo--3'].filter(Boolean).join(' ');
+---
+<div class={cls}>
+  {items.map((it) => (
+    <div><b>{it.value}</b><span>{it.label}</span></div>
+  ))}
+</div>

@@ -1,0 +1,27 @@
+---
+import FuncCard from './FuncCard.astro';
+
+interface Item {
+  icon: string;
+  title: string;
+  text: string;
+}
+
+interface Props {
+  /** Column count — 3 (default) or 5 */
+  cols?: 3 | 5;
+  /** Inline items shortcut. If omitted, render <slot /> with <FuncCard> children. */
+  items?: Item[];
+}
+
+const { cols = 3, items } = Astro.props;
+const cls = ['func-grid', cols === 5 && 'func-grid--5'].filter(Boolean).join(' ');
+---
+<div class={cls}>
+  {items
+    ? items.map((it) => (
+        <FuncCard icon={it.icon} title={it.title}>{it.text}</FuncCard>
+      ))
+    : <slot />
+  }
+</div>

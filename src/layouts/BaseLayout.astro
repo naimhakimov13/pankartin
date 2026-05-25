@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Disclaimer from '../components/Disclaimer.astro';
+import type { ActivePage, ThemeClass } from '../types/product';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Body class — controls the product accent palette */
+  theme?: ThemeClass;
+  /** Which nav link should appear as active */
+  active?: ActivePage;
+  /** Disclaimer adds the "source booklet" sentence on product pages */
+  productDisclaimer?: boolean;
+}
+
+const { title, description, theme, active, productDisclaimer = false } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class={theme}>
+    <Header active={active} />
+    <slot />
+    <Disclaimer withSource={productDisclaimer} />
+    <Footer />
+  </body>
+</html>

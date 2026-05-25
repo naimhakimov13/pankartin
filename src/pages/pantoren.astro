@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PackCard from '../components/PackCard.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FuncGrid from '../components/FuncGrid.astro';
+import FuncCard from '../components/FuncCard.astro';
+import Compo from '../components/Compo.astro';
+import DataTable from '../components/DataTable.astro';
+import Split from '../components/Split.astro';
+import InfoCard from '../components/InfoCard.astro';
+import PromoBanner from '../components/PromoBanner.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const product = products.find((p) => p.slug === 'pantoren')!;
+---
+<BaseLayout
+  theme={product.theme}
+  active={product.slug}
+  productDisclaimer
+  title="Pantoren Kids — липосомальный кальций для детей | PanPharm"
+  description="Pantoren Kids — витаминный коктейль для детей: липосомальный кальций с биодоступностью 99%, магний, цинк, витамины D3 и K2. Для роста костей и зубов с 6 месяцев."
+>
+  <ProductHero
+    product={product}
+    badge="Липосомальный кальций · Магний · Цинк · D3 · K2"
+    slogan="«Витаминный коктейль — здоровье в порядке!»"
+    description="Pantoren Kids — основной строительный материал для костей и зубов с первых дней жизни. Турецкий мультивитаминный комплекс для растущего детского организма: липосомальный кальций с биодоступностью до 99%, магний, цинк и витамины D3 и K2."
+    primary={{ href: '#sostav', label: 'Состав препарата' }}
+    secondary={{ href: '#dozirovka', label: 'Дозировка по возрасту' }}
+  >
+    <PackCard
+      name="Pantoren Kids"
+      sub="Витаминный коктейль для детей"
+      items={[
+        { name: 'Липосомальный кальций', value: '158 мг' },
+        { name: 'Магний (гидроксид)',     value: '120 мг' },
+        { name: 'Глюконат цинка',          value: '75 мг'  },
+        { name: 'Витамин D3',              value: '200 МЕ' },
+        { name: 'Витамин K2',              value: '1,2 МЕ' },
+      ]}
+      form="Форма выпуска: капли 30 мл"
+      formIcon="droplet"
+    />
+  </ProductHero>
+
+  <PromoBanner
+    image="/pantoren.jpeg"
+    alt="Упаковка Pantoren Kids — капли 30 мл"
+    eyebrow="Pantoren Kids"
+    title="«Витаминный коктейль — здоровье в порядке!»"
+    description="Липосомальный кальций с биодоступностью до 99%, магний, цинк и витамины D₃ и K₂ — для крепких костей и зубов с первых дней жизни."
+  />
+
+  <Section>
+    <SectionHead center eyebrow="Главное" title="Пять направлений поддержки растущего организма" />
+    <FuncGrid cols={5}>
+      <FuncCard icon="droplets"   title="Усваивает кальций" />
+      <FuncCard icon="bone"       title="Укрепляет кости"  />
+      <FuncCard icon="puzzle"     title="Формирует хрящи"  />
+      <FuncCard icon="shield"     title="Укрепляет иммунитет" />
+      <FuncCard icon="activity"   title="Обмен веществ"    />
+    </FuncGrid>
+  </Section>
+
+  <Section soft id="sostav">
+    <SectionHead
+      eyebrow="Состав"
+      title="Идеальное сочетание в каждой капле"
+      lead="Липосомальная форма кальция обеспечивает биодоступность до 99% по сравнению с обычным кальцием — минералы и витамины работают в синергии."
+    />
+    <Compo
+      cols={3}
+      items={[
+        { value: '158 мг', label: 'Липосомальный кальций (60 мг кальция)' },
+        { value: '120 мг', label: 'Магний (как гидроксид магния)'           },
+        { value: '75 мг',  label: 'Глюконат цинка (10 мг цинка)'             },
+        { value: '200 МЕ', label: 'Витамин D3'                                },
+        { value: '1,2 МЕ', label: 'Витамин K2'                                },
+      ]}
+    />
+  </Section>
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Инновация"
+      title="Липосомальный кальций · биодоступность 99%"
+      lead="В отличие от обычного кальция, липосомальная форма заключена в защитную оболочку — это позволяет минералу беспрепятственно дойти до клетки и усвоиться организмом ребёнка почти полностью."
+    />
+    <Split>
+      <InfoCard slot="left" icon="x-circle" title="Обычный кальций">
+        <p style="color:var(--muted);margin-top:10px">
+          Большая часть кальция теряется в желудочно-кишечном тракте и не
+          доходит до костной ткани. Низкая биодоступность означает, что
+          ребёнку нужны бо́льшие дозы — а это нагрузка на ЖКТ.
+        </p>
+      </InfoCard>
+      <InfoCard slot="right" accent icon="check-circle" title="Липосомальный кальций">
+        <p style="color:var(--muted);margin-top:10px">
+          Усваивается <b>на 99%</b> — кальций «упакован» в липосому, которая
+          защищает его до момента всасывания. Минимальные дозы, максимальный
+          эффект, бережно для пищеварения ребёнка.
+        </p>
+      </InfoCard>
+    </Split>
+  </Section>
+
+  <Section soft>
+    <SectionHead
+      eyebrow="Зачем каждый компонент"
+      title="Что делает витаминный коктейль таким сильным"
+      lead="Каждый ингредиент играет свою роль — и работает только вместе с остальными."
+    />
+    <Split>
+      <InfoCard slot="left" icon="bone" title="Кальций">
+        <p style="color:var(--muted);margin-top:10px">
+          <b>99% кальция в организме</b> накапливается в костях и зубах.
+          Также отвечает за передачу нервных импульсов, свёртывание крови
+          и регуляцию сердечного ритма.
+        </p>
+      </InfoCard>
+      <InfoCard slot="right" icon="scale" title="Магний">
+        <p style="color:var(--muted);margin-top:10px">
+          Регулирует уровни кальция, калия и натрия. При его дефиците
+          организм пополняет запасы из костной ткани — <b>костно-мышечная
+          система поражается в 100% случаев</b>.
+        </p>
+      </InfoCard>
+    </Split>
+    <div class="split" style="margin-top:30px">
+      <InfoCard icon="sparkles" title="Цинк">
+        <p style="color:var(--muted);margin-top:10px">
+          Улучшает состояние костей, зубов и волос, регулирует работу сальных
+          желёз. Помогает укрепить нервную систему и необходим для синтеза
+          белка — поддерживает восстановление после нагрузок.
+        </p>
+      </InfoCard>
+      <InfoCard icon="sun" title="Витамины D3 + K2">
+        <p style="color:var(--muted);margin-top:10px">
+          Регулируют усвоение минералов кальция и фосфора, их уровень в крови
+          и поступление в костную ткань и зубы. Без D3 и K2 кальций
+          усваивается заметно хуже.
+        </p>
+      </InfoCard>
+    </div>
+  </Section>
+
+  <Section id="dozirovka">
+    <SectionHead
+      eyebrow="Рекомендуемая суточная доза"
+      title="Дозировка по возрасту"
+      lead="Капли удобно дозировать и добавлять в небольшое количество воды или сока. Принимать один раз в день."
+    />
+    <DataTable
+      headers={['Возраст', 'Разовая доза']}
+      rows={[
+        ['Дети от 6 месяцев до 2 лет', '5–10 капель 1 раз в день'],
+        ['Дети от 2 до 4 лет',          '15–20 капель 1 раз в день'],
+        ['Дети 5–14 лет',               '25 капель 1 раз в день'],
+        ['Старше 14 лет',               '40 капель 1 раз в день'],
+      ]}
+    />
+  </Section>
+
+  <CtaBand
+    title="Здоровый рост — с первых дней жизни"
+    description="Pantoren Kids — липосомальный кальций, магний, цинк и витамины D3 + K2 в одной формуле для крепких костей, зубов и иммунитета вашего ребёнка."
+  >
+    <a href="/#contacts" class="btn btn-white">Где купить</a>
+    <a href="/#products" class="btn btn-outline-white">Вся продукция</a>
+  </CtaBand>
+</BaseLayout>

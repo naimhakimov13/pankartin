@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PackCard from '../components/PackCard.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FuncGrid from '../components/FuncGrid.astro';
+import FuncCard from '../components/FuncCard.astro';
+import DataTable from '../components/DataTable.astro';
+import IndGroup from '../components/IndGroup.astro';
+import Split from '../components/Split.astro';
+import InfoCard from '../components/InfoCard.astro';
+import IndList from '../components/IndList.astro';
+import PromoBanner from '../components/PromoBanner.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const product = products.find((p) => p.slug === 'pano-pan-baby')!;
+---
+<BaseLayout
+  theme={product.theme}
+  active={product.slug}
+  productDisclaimer
+  title="Pano-Pan baby — нейрорегулятор для детей | PanPharm"
+  description="Pano-Pan baby — капли-нейрорегулятор для головного мозга: память, внимание, концентрация и поддержка нервной системы ребёнка."
+>
+  <ProductHero
+    product={product}
+    badge="Нейрорегулятор для головного мозга"
+    slogan="«Развитый разум — умный ребёнок»"
+    description="Капли для поддержки нервной системы ребёнка: улучшают память, внимание и концентрацию, снижают уровень стресса и тревожности."
+    primary={{ href: '#sostav', label: 'Состав капель' }}
+    secondary={{ href: '#dozirovka', label: 'Дозировка по возрасту' }}
+  >
+    <PackCard
+      name="Pano-Pan baby"
+      sub="Умный ребёнок · развитый разум"
+      items={[
+        { name: 'γ-Аминомасляная кислота (ГАМК)', value: '100 мг' },
+        { name: 'Цитиколин',                       value: '100 мг' },
+        { name: 'Глицин',                          value: '50 мг'  },
+        { name: 'Глицинат магния',                 value: '40 мг'  },
+        { name: 'Глютаминовая кислота',            value: '25 мг'  },
+      ]}
+      form="Форма выпуска: капли 50 мл"
+      formIcon="droplet"
+    />
+  </ProductHero>
+
+  <PromoBanner
+    image="/pano-pan-baby.jpeg"
+    alt="Упаковка Pano-Pan baby — капли 50 мл"
+    eyebrow="Pano-Pan baby"
+    title="«Развитый разум — умный ребёнок»"
+    description="Нейрорегулятор для головного мозга в каплях: память, внимание, концентрация и спокойствие нервной системы ребёнка."
+  />
+
+  <Section>
+    <SectionHead center eyebrow="Основные функции" title="Пять направлений поддержки мозга" />
+    <FuncGrid cols={5}>
+      <FuncCard icon="brain"  title="Здоровый мозг" />
+      <FuncCard icon="target" title="Концентрация" />
+      <FuncCard icon="eye"    title="Внимание" />
+      <FuncCard icon="zap"    title="Энергия" />
+      <FuncCard icon="leaf"   title="Настроение" />
+    </FuncGrid>
+  </Section>
+
+  <Section soft id="sostav">
+    <SectionHead
+      eyebrow="Состав"
+      title="Активные ингредиенты в 5 мл"
+      lead="Девять компонентов поддерживают работу нервной системы и когнитивных функций ребёнка."
+    />
+    <DataTable
+      headers={['Активный ингредиент', 'Содержание в 5 мл']}
+      rows={[
+        ['γ-Аминомасляная кислота (ГАМК)', '100 мг'],
+        ['Цитиколин',                      '100 мг'],
+        ['Глицин',                         '50 мг'],
+        ['Глицинат магния',                '40 мг'],
+        ['Глютаминовая кислота',           '25 мг'],
+        ['Уридин',                         '5 мг'],
+        ['Цитидин',                        '2 мг'],
+        ['Витамин B6',                     '2 мг'],
+        ['Цинк',                           '1 мг'],
+      ]}
+    />
+  </Section>
+
+  <Section>
+    <SectionHead eyebrow="Показания к применению" title="Когда применяется Pano-Pan baby" />
+    <IndGroup
+      title="Для поддержки нервной системы"
+      cols
+      items={[
+        'Улучшение когнитивных функций',
+        'Снижение уровня стресса и тревожности',
+        'Функциональная астения с эмоциональной лабильностью',
+        'Лечение депрессии и астении',
+      ]}
+    />
+    <IndGroup
+      title="Для улучшения памяти и концентрации"
+      cols
+      items={[
+        'Помощь в учёбе и умственном развитии',
+        'Улучшение адаптационных способностей',
+      ]}
+    />
+    <IndGroup
+      title="Для поддержки общего здоровья"
+      cols
+      items={[
+        'Укрепление иммунной системы',
+        'Улучшение сна и общего самочувствия',
+      ]}
+    />
+    <IndGroup
+      title="Комплексное лечение неврологических расстройств у детей"
+      cols
+      items={[
+        'Умственная отсталость различной степени выраженности',
+        'Задержка развития: психического, речевого, моторного или их сочетания',
+        'Гиперкинетические расстройства (синдром гиперактивности с дефицитом внимания)',
+        'Неврозоподобные состояния (заикание в клонической форме, тики)',
+      ]}
+    />
+  </Section>
+
+  <Section soft id="dozirovka">
+    <SectionHead
+      eyebrow="Рекомендуемая суточная доза"
+      title="Дозировка по возрасту"
+      lead="Капли принимать, добавляя в небольшое количество воды, сока или пищи."
+    />
+    <DataTable
+      headers={['Возраст', 'Дозировка']}
+      rows={[
+        ['Дети 2–4 лет',         '1 капля 1–2 раза в день'],
+        ['Дети 4–6 лет',         '2 капли 1–2 раза в день'],
+        ['Дети 7–12 лет',        '3–5 капель 2 раза в день'],
+        ['Подростки 13–18 лет',  '8–10 капель 2 раза в день'],
+      ]}
+    />
+  </Section>
+
+  <Section>
+    <Split>
+      <div slot="left">
+        <span class="eyebrow">Основные функции</span>
+        <h2>Как препарат действует на мозг</h2>
+        <IndList
+          style="margin-top:20px"
+          items={[
+            'Регулирование двигательной активности',
+            'Обеспечение процессов памяти и мышления',
+            'Противосудорожное действие',
+            'Снабжение мозга кровью',
+            'Активация энергетических процессов',
+            'Повышение дыхательной деятельности',
+            'Ускорение утилизации глюкозы',
+            'Вывод токсических продуктов обмена',
+          ]}
+        />
+      </div>
+      <div slot="right">
+        <InfoCard accent title="Когнитивная стимуляция">
+          <p style="color:var(--muted);margin-top:10px">
+            Улучшает кровообращение, укрепляет сосуды, улучшает нервную
+            проводимость, увеличивает синтез нейромедиаторов, восстанавливает
+            мембрану нейрона, стимулирует тканевое дыхание и энергетический обмен.
+          </p>
+        </InfoCard>
+        <div style="margin-top:20px">
+          <InfoCard title="Эмоциональное спокойствие">
+            <p style="color:var(--muted);margin-top:10px">
+              Способствует успокоению и расслаблению, помогает контролировать
+              беспокойство и «панические» состояния, устраняет мышечные спазмы,
+              содействует качественному сну и повышает общий иммунитет.
+            </p>
+          </InfoCard>
+        </div>
+      </div>
+    </Split>
+  </Section>
+
+  <Section soft>
+    <SectionHead center eyebrow="Принцип действия" title="Нейрорегулятор для головного мозга" />
+    <Split>
+      <InfoCard slot="left" title="Баланс возбуждения и торможения">
+        <p style="color:var(--muted);margin-top:10px">
+          Основная задача препарата — блокирование лишних информационных потоков
+          для создания паритета между процессами возбуждения и торможения
+          в мозге. Это обеспечивает такие функции, как внимание, двигательный
+          и эмоциональный контроль.
+        </p>
+      </InfoCard>
+      <InfoCard slot="right" title="Стабилизирующая роль">
+        <p style="color:var(--muted);margin-top:10px">
+          Препарат играет стабилизирующую роль на умственном и физическом уровне,
+          помогает восстановить баланс и поддерживать нормальное настроение,
+          участвует в процессах запоминания и помогает справляться с тревогой.
+        </p>
+      </InfoCard>
+    </Split>
+  </Section>
+
+  <CtaBand
+    title="Развитый разум — умный ребёнок"
+    description="Поддержите память, внимание и спокойствие вашего ребёнка вместе с Pano-Pan baby."
+  >
+    <a href="/#contacts" class="btn btn-white">Где купить</a>
+    <a href="/#products" class="btn btn-outline-white">Вся продукция</a>
+  </CtaBand>
+</BaseLayout>

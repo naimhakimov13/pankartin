@@ -1,0 +1,38 @@
+---
+import { Icon } from 'astro-icon/components';
+import { products } from '../data/products';
+
+// Decorative summary card next to the home hero copy. Pulls icons + labels
+// from the product registry so a new product automatically gets a pill.
+// `icon` is a Lucide slug (rendered as lucide:<slug>).
+const icons: Record<string, { icon: string; dotClass: string; sub: string }> = {
+  'pan-pro':       { icon: 'bone',  dotClass: 'p1', sub: 'здоровье суставов' },
+  'pankartin':     { icon: 'zap',   dotClass: 'p2', sub: 'энергия для детей' },
+  'pano-pan-baby': { icon: 'brain', dotClass: 'p3', sub: 'развитие мозга'    },
+  'metfolipan':    { icon: 'dna',   dotClass: 'p1', sub: 'фолат для женщин'  },
+  'oleopan':       { icon: 'heart', dotClass: 'p2', sub: 'спокойствие и сон' },
+  'pan-bio':       { icon: 'bug',   dotClass: 'p3', sub: 'микрофлора ЖКТ'    },
+  'pannevrol':     { icon: 'brain', dotClass: 'p1', sub: 'нейропротектор'    },
+  'pan-sedil':     { icon: 'moon',   dotClass: 'p2', sub: 'сон и спокойствие'      },
+  'pansist':       { icon: 'cherry', dotClass: 'p3', sub: 'мочевыводящие пути'     },
+  'pantoren':      { icon: 'baby',           dotClass: 'p1', sub: 'кальций для детей'   },
+  'pantovit':      { icon: 'sun',            dotClass: 'p2', sub: 'витамин D₃ + K₂'      },
+  'panvit-mama':   { icon: 'heart-handshake',dotClass: 'p1', sub: 'витамины для мам'     },
+  'protektol-pan': { icon: 'shield-check',   dotClass: 'p3', sub: 'защита и баланс'      },
+};
+---
+<div class="hero-art">
+  <div class="hero-pills">
+    {products.slice(0,5).map((p) => {
+      const meta = icons[p.slug];
+      return (
+        <div class="hero-pill">
+          <span class={`dot ${meta?.dotClass ?? 'p1'}`}>
+            <Icon name={`lucide:${meta?.icon ?? 'sparkles'}`} />
+          </span>
+          <span><b>{p.name}</b><small>{meta?.sub ?? p.summary}</small></span>
+        </div>
+      );
+    })}
+  </div>
+</div>

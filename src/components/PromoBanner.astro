@@ -1,0 +1,31 @@
+---
+interface Props {
+  /** Absolute path under /public, e.g. "/pankartin.jpeg" */
+  image: string;
+  /** Alt text for the photo */
+  alt: string;
+  /** Small uppercase chip above the heading */
+  eyebrow: string;
+  /** Heading shown next to the photo */
+  title: string;
+  /** Lead paragraph under the heading */
+  description: string;
+}
+
+const { image, alt, eyebrow, title, description } = Astro.props;
+---
+<section class="product-banner" aria-label={alt}>
+  <div class="container product-banner-inner">
+    <div class="product-banner-text">
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{title}</h2>
+      <p class="lead" style="margin-top:14px">{description}</p>
+    </div>
+    <img
+      class="product-banner-img"
+      src={image}
+      alt={alt}
+      loading="lazy"
+    />
+  </div>
+</section>

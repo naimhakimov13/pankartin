@@ -1,0 +1,18 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  /** Center the head + constrain width */
+  center?: boolean;
+}
+
+const { eyebrow, title, lead, center = false } = Astro.props;
+const cls = ['section-head', center && 'center'].filter(Boolean).join(' ');
+---
+<div class={cls}>
+  {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+  <h2>{title}</h2>
+  {lead && <p class="lead">{lead}</p>}
+  <slot />
+</div>

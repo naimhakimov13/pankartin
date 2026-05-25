@@ -1,0 +1,38 @@
+---
+import type { Product } from '../types/product';
+
+interface Props {
+  /** Product entry — name drives crumbs/h1 */
+  product: Product;
+  /** Badge text under the breadcrumbs, e.g. composition summary */
+  badge: string;
+  /** Italic slogan under h1 */
+  slogan: string;
+  /** Description paragraph under the slogan */
+  description: string;
+  /** Primary CTA — usually anchors to #sostav */
+  primary: { href: string; label: string };
+  /** Secondary CTA — usually anchors to #dozirovka */
+  secondary: { href: string; label: string };
+}
+
+const { product, badge, slogan, description, primary, secondary } = Astro.props;
+---
+<section class="phero">
+  <div class="container phero-inner">
+    <div>
+      <div class="crumbs">
+        <a href="/">Главная</a> / Продукция / {product.name}
+      </div>
+      <span class="badge">{badge}</span>
+      <h1>{product.name}</h1>
+      <p class="slogan">{slogan}</p>
+      <p>{description}</p>
+      <div class="phero-actions">
+        <a href={primary.href} class="btn btn-white">{primary.label}</a>
+        <a href={secondary.href} class="btn btn-outline-white">{secondary.label}</a>
+      </div>
+    </div>
+    <slot />
+  </div>
+</section>

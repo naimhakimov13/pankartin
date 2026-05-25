@@ -1,0 +1,23 @@
+---
+import type { Product } from '../types/product';
+
+interface Props {
+  product: Product;
+}
+const { product } = Astro.props;
+---
+<article class={`product-card ${product.theme}`}>
+  <div class={`product-cap ${product.capClass}`}>
+    <span class="tag">{product.tag}</span>
+    <h3>{product.name}</h3>
+    <p>{product.summary}</p>
+  </div>
+  <div class="product-body">
+    <ul>
+      {product.bullets.map((line) => <li>{line}</li>)}
+    </ul>
+    <a href={`/${product.slug}`} class="btn btn-primary">
+      Подробнее о {product.name} →
+    </a>
+  </div>
+</article>

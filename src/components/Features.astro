@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Feature {
+  /** Lucide icon slug, e.g. "award" → renders lucide:award */
+  icon: string;
+  title: string;
+  text: string;
+}
+
+const features: Feature[] = [
+  { icon: 'award',     title: 'Сертификация ISO',     text: 'Производство соответствует международному стандарту ISO 9001:2015.' },
+  { icon: 'leaf',      title: 'Натуральный состав',   text: 'Оригинальная продукция на основе натуральных ингредиентов.'         },
+  { icon: 'users',     title: 'Для всей семьи',        text: 'Решения для взрослых и детей — от 2 лет и старше.'                   },
+  { icon: 'handshake', title: 'Эксклюзивная поставка', text: 'PanPharm — официальный эксклюзивный дистрибьютор линейки.'         },
+];
+---
+<div class="features">
+  {features.map((f) => (
+    <div class="feature">
+      <div class="ico"><Icon name={`lucide:${f.icon}`} /></div>
+      <h3>{f.title}</h3>
+      <p>{f.text}</p>
+    </div>
+  ))}
+</div>

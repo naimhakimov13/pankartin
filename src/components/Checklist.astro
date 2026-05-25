@@ -1,0 +1,10 @@
+---
+interface Props {
+  /** Items rendered as ✓ pills in a 2-column grid */
+  items: string[];
+}
+const { items } = Astro.props;
+---
+<ul class="checklist">
+  {items.map((text) => <li>{text}</li>)}
+</ul>

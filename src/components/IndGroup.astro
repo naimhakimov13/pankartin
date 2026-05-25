@@ -1,0 +1,15 @@
+---
+import IndList from './IndList.astro';
+
+interface Props {
+  title: string;
+  items: string[];
+  /** Pass through to inner IndList — Pano-Pan baby uses 2-col groups */
+  cols?: boolean;
+}
+const { title, items, cols = false } = Astro.props;
+---
+<div class="ind-group">
+  <h4>{title}</h4>
+  <IndList items={items} cols={cols} />
+</div>

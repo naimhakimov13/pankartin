@@ -1,0 +1,29 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  /** Use the soft accent-coloured variant */
+  accent?: boolean;
+  title?: string;
+  /** Optional Lucide icon slug rendered before the title */
+  icon?: string;
+  /** Override icon color (e.g. fixed green/red for status cards).
+      Defaults to var(--accent) via the parent's `color`. */
+  iconColor?: string;
+}
+const { accent = false, title, icon, iconColor } = Astro.props;
+const cls = ['info-card', accent && 'accent'].filter(Boolean).join(' ');
+---
+<div class={cls}>
+  {title && (
+    <h3>
+      {icon && (
+        <span class="info-icon" style={iconColor ? `color:${iconColor}` : undefined}>
+          <Icon name={`lucide:${icon}`} />
+        </span>
+      )}
+      {title}
+    </h3>
+  )}
+  <slot />
+</div>

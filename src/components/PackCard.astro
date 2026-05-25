@@ -1,0 +1,37 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface PackItem {
+  /** Muted name, e.g. "L-карнитин" */
+  name: string;
+  /** Bold accent value, e.g. "400 мг" */
+  value: string;
+}
+
+interface Props {
+  /** Bold heading inside the card, usually the product name */
+  name: string;
+  /** Muted subheading under the name */
+  sub: string;
+  items: PackItem[];
+  /** Bottom callout strip text, e.g. "Форма выпуска: сироп 150 мл" */
+  form: string;
+  /** Optional Lucide icon slug shown before the form text */
+  formIcon?: string;
+}
+
+const { name, sub, items, form, formIcon } = Astro.props;
+---
+<div class="pack">
+  <div class="pack-name">{name}</div>
+  <div class="pack-sub">{sub}</div>
+  <ul class="pack-list">
+    {items.map((it) => (
+      <li><span>{it.name}</span><b>{it.value}</b></li>
+    ))}
+  </ul>
+  <div class="form">
+    {formIcon && <Icon name={`lucide:${formIcon}`} />}
+    <span>{form}</span>
+  </div>
+</div>

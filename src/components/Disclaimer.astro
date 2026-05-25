@@ -1,0 +1,12 @@
+---
+interface Props {
+  /** Add the trailing sentence about source booklet (used on product pages) */
+  withSource?: boolean;
+}
+const { withSource = false } = Astro.props;
+---
+<p class="disclaimer">
+  БАД. Не является лекарственным средством. Имеются противопоказания —
+  перед применением необходимо проконсультироваться со специалистом.
+  {withSource && ' Информация приведена по материалам буклета производителя.'}
+</p>

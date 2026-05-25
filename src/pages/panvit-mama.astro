@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PackCard from '../components/PackCard.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FuncGrid from '../components/FuncGrid.astro';
+import Compo from '../components/Compo.astro';
+import Checklist from '../components/Checklist.astro';
+import DataTable from '../components/DataTable.astro';
+import IndList from '../components/IndList.astro';
+import Split from '../components/Split.astro';
+import InfoCard from '../components/InfoCard.astro';
+import PromoBanner from '../components/PromoBanner.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const product = products.find((p) => p.slug === 'panvit-mama')!;
+---
+<BaseLayout
+  theme={product.theme}
+  active={product.slug}
+  productDisclaimer
+  title="Panvit-mama — мультивитамины для беременных и кормящих | PanPharm"
+  description="Panvit-mama — 13 витаминов и 7 минералов в одной капсуле для женщин на этапе планирования, беременности и кормления. Одной капсулы достаточно для матери и ребёнка."
+>
+  <ProductHero
+    product={product}
+    badge="13 витаминов · 7 минералов · 30 капсул"
+    slogan="«С заботой о маме и малыше»"
+    description="Сбалансированный мультивитаминный комплекс для женщин на этапе планирования, во время беременности и кормления. Одна капсула полностью покрывает суточную потребность мамы и ребёнка в витаминах и микроэлементах."
+    primary={{ href: '#sostav', label: 'Состав препарата' }}
+    secondary={{ href: '#dozirovka', label: 'Как принимать' }}
+  >
+    <PackCard
+      name="Panvit-mama"
+      sub="13 витаминов + 7 минералов"
+      items={[
+        { name: 'Фолиевая кислота', value: '400 мкг' },
+        { name: 'Железо',            value: '25 мг'   },
+        { name: 'Кальций',            value: '200 мг'  },
+        { name: 'Йод',                value: '150 мкг' },
+        { name: 'Витамин D₃',         value: '10 мкг'  },
+        { name: 'Витамин B12',        value: '4,5 мкг' },
+      ]}
+      form="Форма выпуска: 30 капсул"
+      formIcon="pill"
+    />
+  </ProductHero>
+
+  <PromoBanner
+    image="/panvit-mama.jpeg"
+    alt="Упаковка Panvit-mama — 30 капсул"
+    eyebrow="Panvit-mama"
+    title="«С заботой о маме и малыше»"
+    description="13 витаминов и 7 минералов в одной капсуле — для планирования беременности, всего срока и периода кормления."
+  />
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Главное"
+      title="Сбалансированная формула для мамы и малыша"
+      lead="Один комплекс закрывает все ключевые задачи — от поставки кислорода до формирования костей плода."
+    />
+    <FuncGrid
+      cols={3}
+      items={[
+        { icon: 'wind',          title: 'Кислород органам',     text: 'Обеспечивает кислородом все органы матери и ребёнка.' },
+        { icon: 'shield',        title: 'Тонус и иммунитет',    text: 'Поддерживает нормальный тонус матки, предотвращает отёки, укрепляет иммунитет.' },
+        { icon: 'brain',         title: 'Нервная ткань',        text: 'Необходим для нормальной работы нервной ткани и костного мозга.' },
+        { icon: 'eye',           title: 'Зрение и кожа плода',  text: 'Требуется для развития органов зрения, слизистых оболочек и кожи плода.' },
+        { icon: 'bone',          title: 'Кости ребёнка',        text: 'Участвует в обмене кальция и в правильном формировании костей плода.' },
+        { icon: 'heart-handshake', title: 'Мама и малыш',        text: 'Одна капсула покрывает потребности обоих — не нужны дополнительные моновитамины.' },
+      ]}
+    />
+  </Section>
+
+  <Section soft id="sostav">
+    <SectionHead
+      eyebrow="Состав"
+      title="Активные вещества в 1 капсуле"
+      lead="13 витаминов и 7 микроэлементов в физиологичных дозировках, рассчитанных на потребности беременной и кормящей женщины."
+    />
+    <Compo
+      cols={3}
+      items={[
+        { value: '0,75 РЭ', label: 'Витамин A'    },
+        { value: '1,5 мг',  label: 'Бета-каротин' },
+        { value: '20 мг',   label: 'Витамин E'    },
+        { value: '10 мкг',  label: 'Витамин D₃'   },
+        { value: '70 мг',   label: 'Витамин C'    },
+        { value: '3 мг',    label: 'Витамин B1'   },
+        { value: '2 мг',    label: 'Витамин B2'   },
+        { value: '2,2 мг',  label: 'Витамин B6'   },
+        { value: '400 мкг', label: 'Фолиевая кислота' },
+        { value: '4,5 мкг', label: 'Витамин B12' },
+        { value: '16 мг',   label: 'Ниацин'       },
+        { value: '7 мг',    label: 'Витамин B5'   },
+        { value: '30 мкг',  label: 'Биотин'       },
+        { value: '200 мг',  label: 'Кальций'      },
+        { value: '25 мг',   label: 'Железо'       },
+        { value: '18 мг',   label: 'Цинк'         },
+        { value: '2 мг',    label: 'Медь'         },
+        { value: '3,3 мг',  label: 'Марганец'     },
+        { value: '25 мкг',  label: 'Хром'         },
+        { value: '150 мкг', label: 'Йод'          },
+        { value: '25 мкг',  label: 'Селен'        },
+      ]}
+    />
+  </Section>
+
+  <Section id="dozirovka">
+    <SectionHead
+      eyebrow="Способ применения и дозы"
+      title="Как принимать Panvit-mama"
+      lead="Капсулу принимают во время еды. Курс рассчитан на весь период от планирования до окончания кормления."
+    />
+    <DataTable
+      headers={['Этап', 'Суточная доза']}
+      rows={[
+        ['При планировании беременности', '1 капсула 2 раза в день'],
+        ['Беременным женщинам',           '1 капсула 1 раз в день'],
+        ['Кормящим женщинам',              '1 капсула 2 раза в день'],
+      ]}
+    />
+    <p class="lead" style="margin-top:14px;font-size:.92rem">
+      <b>Можно ли дополнительно принимать другие моновитамины?</b><br />
+      Нет, не нужно. Одна капсула <b>Panvit-mama полностью компенсирует
+      суточную дозу</b> витаминов и микроэлементов, необходимых как для
+      мамы, так и для малыша.
+    </p>
+    <p class="lead" style="margin-top:14px;font-size:.92rem">
+      <b>Противопоказания:</b> индивидуальная непереносимость компонентов.
+    </p>
+  </Section>
+
+  <Section soft>
+    <SectionHead
+      eyebrow="Зачем это нужно"
+      title="Факторы риска микронутриентной недостаточности"
+      lead="По данным отдельных исследований, распространённость фолатного дефицита у женщин достигает 96%. Дефицит витаминов у матери запускает цепочку нарушений развития плода."
+    />
+    <Split>
+      <InfoCard slot="left" icon="alert-triangle" title="Факторы риска">
+        <IndList
+          style="margin-top:14px"
+          items={[
+            'Неадекватное по количеству и качеству питание',
+            'Применение некоторых лекарственных средств',
+            'Соматические заболевания',
+            'Избыточная или недостаточная масса тела',
+            'Генетические аномалии метаболизма витаминов',
+            'Юный или старший возраст',
+            'Вредные привычки и факторы среды',
+          ]}
+        />
+      </InfoCard>
+      <InfoCard slot="right" accent icon="git-branch" title="Что страдает при дефиците">
+        <p style="color:var(--muted);margin-top:10px">
+          <b>Зачатие и имплантация:</b> цинк, фолаты, железо, витамины B6,
+          B12, D.
+        </p>
+        <p style="color:var(--muted);margin-top:10px">
+          <b>Эмбриогенез и рост плода:</b> йод, фолаты, железо, витамины
+          B12, D, кальций.
+        </p>
+        <p style="color:var(--muted);margin-top:10px">
+          <b>Послеродовой период и кормление:</b> железо, кальций, витамин
+          D, белки, жиры.
+        </p>
+      </InfoCard>
+    </Split>
+  </Section>
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Сбалансированная формула"
+      title="Чем поддерживает Panvit-mama"
+      lead="Шесть ключевых направлений, по которым работает комплекс."
+    />
+    <Checklist
+      items={[
+        'Обеспечивает кислородом все органы матери и ребёнка',
+        'Поддерживает нормальный тонус матки и предотвращает отёки',
+        'Необходим для нормальной работы нервной ткани и костного мозга',
+        'Требуется для развития органов зрения, слизистых и кожи плода',
+        'Участвует в обмене кальция и формировании костей плода',
+        'Поддерживает иммунитет мамы и малыша',
+      ]}
+    />
+  </Section>
+
+  <CtaBand
+    title="С заботой о маме и малыше"
+    description="Panvit-mama — один комплекс для всех этапов: планирование, беременность, кормление. Сбалансированная формула для здоровья мамы и развития ребёнка."
+  >
+    <a href="/#contacts" class="btn btn-white">Где купить</a>
+    <a href="/#products" class="btn btn-outline-white">Вся продукция</a>
+  </CtaBand>
+</BaseLayout>

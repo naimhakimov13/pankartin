@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ProductsGrid from '../components/ProductsGrid.astro';
+import Features from '../components/Features.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ContactGrid from '../components/ContactGrid.astro';
+import { products } from '../data/products';
+---
+<BaseLayout
+  active="home"
+  title="PanPharm — препараты для здоровья всей семьи"
+  description="PanPharm — эксклюзивный дистрибьютор препаратов Pan Pro, PanKartin, Pano-Pan baby и MetfoliPan для суставов, энергии, развития мозга и поддержки беременности."
+>
+  <Hero />
+
+  <Section id="products">
+    <SectionHead
+      center
+      eyebrow="Наша продукция"
+      title={`${products.length} препарата — несколько направлений заботы`}
+      lead="Каждый продукт решает свою задачу: для взрослых, женщин и детей."
+    />
+    <ProductsGrid />
+  </Section>
+
+  <Section soft>
+    <SectionHead center eyebrow="Почему PanPharm" title="Качество, которому доверяют" />
+    <Features />
+  </Section>
+
+  <CtaBand
+    title="Выберите препарат под вашу задачу"
+    description="Подвижность суставов, заряд энергии, развитие мозга ребёнка или поддержка беременности — у каждой цели есть своё решение."
+  >
+    {products.map((p) => (
+      <a href={`/${p.slug}`} class="btn btn-white">{p.name}</a>
+    ))}
+  </CtaBand>
+
+  <Section id="contacts">
+    <SectionHead
+      center
+      eyebrow="Контакты"
+      title="Свяжитесь с нами"
+      lead="По вопросам поставок и сотрудничества обращайтесь к эксклюзивному дистрибьютору PanPharm."
+    />
+    <ContactGrid />
+  </Section>
+</BaseLayout>

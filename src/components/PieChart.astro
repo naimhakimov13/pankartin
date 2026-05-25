@@ -1,0 +1,35 @@
+---
+// Pan Pro–specific component. The two pies are pre-baked conic-gradients in
+// global.css (.pie.panpro, .pie.control), so this component just wires up the
+// title, aria label, and a legend.
+
+interface LegendItem {
+  /** Swatch class: g1 | g2 | g3 (uses the global .sw.g* palette) */
+  swatch: 'g1' | 'g2' | 'g3';
+  label: string;
+}
+
+interface Props {
+  /** Card title above the pie */
+  title: string;
+  /** Colour of the title — usually 'accent' for the treated group, 'muted' for control */
+  titleTone?: 'accent' | 'muted';
+  /** Which conic-gradient variant to render */
+  variant: 'panpro' | 'control';
+  /** Aria label for screen readers */
+  ariaLabel: string;
+  legend: LegendItem[];
+}
+
+const { title, titleTone = 'accent', variant, ariaLabel, legend } = Astro.props;
+const titleColor = titleTone === 'accent' ? 'var(--accent)' : 'var(--muted)';
+---
+<div class="chart-card">
+  <div class="chart-title" style={`color:${titleColor}`}>{title}</div>
+  <div class={`pie ${variant}`} role="img" aria-label={ariaLabel}></div>
+  <ul class="legend">
+    {legend.map((it) => (
+      <li><span class={`sw ${it.swatch}`}></span> {it.label}</li>
+    ))}
+  </ul>
+</div>

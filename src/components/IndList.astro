@@ -1,0 +1,14 @@
+---
+interface Props {
+  items: string[];
+  /** Switch to a 2-column grid via .ind-list.cols */
+  cols?: boolean;
+  /** Extra style passthrough — e.g. {marginTop:'18px'} for inline-styled lists */
+  style?: string;
+}
+const { items, cols = false, style } = Astro.props;
+const cls = ['ind-list', cols && 'cols'].filter(Boolean).join(' ');
+---
+<ul class={cls} style={style}>
+  {items.map((text) => <li set:html={text} />)}
+</ul>

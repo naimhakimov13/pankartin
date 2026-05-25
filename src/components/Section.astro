@@ -1,0 +1,18 @@
+---
+interface Props {
+  /** Light background variant (--bg-soft) */
+  soft?: boolean;
+  /** Accent-tinted background variant (--accent-soft) */
+  tint?: boolean;
+  /** Anchor id for in-page navigation (e.g. "sostav", "dozirovka") */
+  id?: string;
+}
+
+const { soft = false, tint = false, id } = Astro.props;
+const cls = ['section', soft && 'soft', tint && 'tint'].filter(Boolean).join(' ');
+---
+<section class={cls} id={id}>
+  <div class="container">
+    <slot />
+  </div>
+</section>

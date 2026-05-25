@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PackCard from '../components/PackCard.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FuncGrid from '../components/FuncGrid.astro';
+import Compo from '../components/Compo.astro';
+import Checklist from '../components/Checklist.astro';
+import IndGroup from '../components/IndGroup.astro';
+import IndList from '../components/IndList.astro';
+import Split from '../components/Split.astro';
+import InfoCard from '../components/InfoCard.astro';
+import PromoBanner from '../components/PromoBanner.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const product = products.find((p) => p.slug === 'oleopan')!;
+---
+<BaseLayout
+  theme={product.theme}
+  active={product.slug}
+  productDisclaimer
+  title="OleoPan — магний бисглицинат, цитрат магния и витамин B6 | PanPharm"
+  description="OleoPan — две активные формы магния (бисглицинат и цитрат) с витамином B6. Восполняет дефицит магния, снижает тревожность, поддерживает нервную и сердечно-сосудистую системы."
+>
+  <ProductHero
+    product={product}
+    badge="Магния бисглицинат · Цитрат магния · Витамин B6"
+    slogan="«Магний — ключ к спокойствию и энергии»"
+    description="Две органические активные формы магния — хелатный бисглицинат и цитрат — обеспечивают независимое усвоение и быструю доставку магния в клетку. Витамин B6 усиливает эффекты магния."
+    primary={{ href: '#sostav', label: 'Состав препарата' }}
+    secondary={{ href: '#dozirovka', label: 'Как принимать' }}
+  >
+    <PackCard
+      name="OleoPan"
+      sub="Магний + Пиридоксин"
+      items={[
+        { name: 'Магния хелат',        value: '670 мг'    },
+        { name: 'Чистого магния',       value: 'до 134 мг' },
+        { name: 'Цитрат магния',        value: '210 мг'    },
+        { name: 'Магния (эквивалент)',  value: '50 мг'     },
+        { name: 'Витамин B6',           value: '2 мг'      },
+      ]}
+      form="Форма выпуска: 30 капсул"
+      formIcon="pill"
+    />
+  </ProductHero>
+
+  <PromoBanner
+    image="/oleopan.jpeg"
+    alt="Упаковка OleoPan — 30 капсул"
+    eyebrow="OleoPan"
+    title="Магний — ключ к спокойствию и энергии"
+    description="Две активные формы магния в одной капсуле и витамин B6 для максимального усвоения и быстрого результата."
+  />
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Главное"
+      title="Что даёт OleoPan"
+      lead="Помогает восполнять дефицит магния и приводит в норму работу нервной системы."
+    />
+    <FuncGrid
+      cols={3}
+      items={[
+        { icon: 'flower-2', title: 'Спокойствие и сон', text: 'Снижает уровень стресса и тревожности, расслабляет мышцы и улучшает качество сна.' },
+        { icon: 'heart',    title: 'Сердце и сосуды',    text: 'Поддерживает баланс нервной и сердечно-сосудистой систем, нормализует работу сердца.' },
+        { icon: 'zap',      title: 'Быстрое усвоение',   text: 'Две формы магния усваиваются независимо — на 90% лучше аналогов, бережно к ЖКТ.' },
+      ]}
+    />
+  </Section>
+
+  <Section soft id="sostav">
+    <SectionHead
+      eyebrow="Состав"
+      title="Содержание в одной капсуле"
+      lead="OleoPan — элементарный магний в двух органических активных формах плюс витамин B6 для усиления эффектов магния."
+    />
+    <Compo
+      cols={2}
+      items={[
+        { value: '670 мг',    label: 'Магния хелат (бисглицинат)' },
+        { value: 'до 134 мг', label: 'Чистого магния'              },
+        { value: '210 мг',    label: 'Цитрат магния (экв. 50 мг)'  },
+        { value: '2 мг',      label: 'Витамин B6 (пиридоксин)'     },
+      ]}
+    />
+    <div class="split" style="margin-top:36px">
+      <InfoCard accent title="Чистая формула">
+        <p style="color:var(--muted);margin-top:10px">
+          <b>Оболочка капсулы не содержит:</b> диоксид титана и синтетические красители.
+        </p>
+        <p style="color:var(--muted);margin-top:10px">
+          <b>Компоненты не содержат:</b> диоксид кремния, стеарат магния, МКЦ.
+        </p>
+      </InfoCard>
+      <InfoCard title="Две активные формы магния">
+        <p style="color:var(--muted);margin-top:10px">
+          Независимое усвоение хелатного бисглицината и цитрата обеспечивает
+          более быструю доставку магния в клетку. Препарат усваивается
+          <b>на 90% лучше аналогов</b> и клинически протестирован.
+        </p>
+      </InfoCard>
+    </div>
+  </Section>
+
+  <Section>
+    <SectionHead
+      eyebrow="Показания к применению"
+      title="Когда полезен OleoPan"
+      lead="Препарат применяют при состояниях, связанных с дефицитом магния и повышенной нагрузкой на нервную систему."
+    />
+    <Checklist
+      items={[
+        'Повышенная тревожность и эмоциональная нестабильность',
+        'Недосыпы и нарушения качества сна',
+        'Повышенный уровень стресса',
+        'Ухудшение работы сердечно-сосудистой системы',
+        'Мышечные спазмы и судороги',
+        'Хроническая усталость и снижение работоспособности',
+      ]}
+    />
+  </Section>
+
+  <Section soft id="dozirovka">
+    <Split>
+      <div slot="left">
+        <span class="eyebrow">Способ применения и дозы</span>
+        <h2>Как принимать OleoPan</h2>
+        <p class="lead" style="margin-top:14px">
+          Рекомендуемая суточная доза — <b>одна капсула в день</b>. Перед началом
+          приёма всегда следует проконсультироваться с врачом для определения
+          оптимальной дозировки, особенно для беременных женщин.
+        </p>
+        <IndList
+          style="margin-top:20px"
+          items={[
+            'Принимать по 1 капсуле в день',
+            'Курс приёма определяется индивидуально',
+            'Беременным — только после консультации со специалистом',
+          ]}
+        />
+      </div>
+      <InfoCard slot="right" accent title="Кратко о приёме">
+        <ul class="pack-list">
+          <li><span>Суточная доза</span><b>1 капсула</b></li>
+          <li><span>Форма выпуска</span><b>30 капсул</b></li>
+          <li><span>Магний в капсуле</span><b>до 184 мг</b></li>
+          <li><span>Витамин B6</span><b>2 мг</b></li>
+          <li><span>Курс</span><b>по назначению</b></li>
+        </ul>
+      </InfoCard>
+    </Split>
+  </Section>
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Для женщин в период беременности"
+      title="Дефицит магния во время беременности"
+      lead="Недостаток магния отражается на здоровье матери, развитии плода и состоянии новорождённого. Своевременное восполнение помогает снизить риски."
+    />
+    <div class="split" style="grid-template-columns:repeat(3,1fr);gap:24px">
+      <IndGroup
+        title="Мать"
+        items={[
+          'Тетания — судороги скелетных мышц, чаще ног',
+          'Обменные нарушения: гестационный диабет, гиперинсулинемия, нарушение обмена оксалатов',
+        ]}
+      />
+      <IndGroup
+        title="Плод"
+        items={[
+          'Гипотрофия',
+          'Внутриутробные уродства — прежде всего связанные с соединительной тканью (пороки сердца, суставов) и стигмы',
+          'Плацентарная недостаточность: выкидыши, преждевременные роды, гипертензия, эклампсия и преэклампсия',
+        ]}
+      />
+      <IndGroup
+        title="Новорождённые"
+        items={[
+          'Синдром внезапной смерти младенца (Sudden Infant Death Syndrome — SIDS)',
+          'Судороги у новорождённых',
+        ]}
+      />
+    </div>
+  </Section>
+
+  <Section soft>
+    <SectionHead
+      eyebrow="Польза при беременности"
+      title="Чем помогает OleoPan будущей маме"
+      lead="Комплекс мягко поддерживает организм женщины и создаёт условия для здорового развития ребёнка."
+    />
+    <Checklist
+      items={[
+        'Обеспечивает полноценное развитие плода',
+        'Способствует поддержанию нормального тонуса матки',
+        'Снимает симптомы раздражительности и улучшает настроение',
+        'Помогает наладить здоровый сон',
+        'Уменьшает риск возникновения судорог',
+        'Бережно воздействует на желудочно-кишечный тракт',
+      ]}
+    />
+  </Section>
+
+  <CtaBand
+    title="Магний — ключ к спокойствию и энергии"
+    description="Восполните дефицит магния и поддержите нервную систему вместе с OleoPan."
+  >
+    <a href="/#contacts" class="btn btn-white">Где купить</a>
+    <a href="/#products" class="btn btn-outline-white">Вся продукция</a>
+  </CtaBand>
+</BaseLayout>

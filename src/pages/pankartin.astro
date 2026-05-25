@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PackCard from '../components/PackCard.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FuncGrid from '../components/FuncGrid.astro';
+import Compo from '../components/Compo.astro';
+import Checklist from '../components/Checklist.astro';
+import DataTable from '../components/DataTable.astro';
+import Split from '../components/Split.astro';
+import InfoCard from '../components/InfoCard.astro';
+import IndList from '../components/IndList.astro';
+import BarChart from '../components/BarChart.astro';
+import PromoBanner from '../components/PromoBanner.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const product = products.find((p) => p.slug === 'pankartin')!;
+---
+<BaseLayout
+  theme={product.theme}
+  active={product.slug}
+  productDisclaimer
+  title="PanKartin — детский сироп с L-карнитином | PanPharm"
+  description="PanKartin — сироп с L-карнитином, коэнзимом Q10 и витамином B12 для энергии, роста и развития ребёнка. Состав, показания, дозировка."
+>
+  <ProductHero
+    product={product}
+    badge="L-карнитин · Коэнзим Q10 · Витамин B12"
+    slogan="«Зарядись энергией!»"
+    description="Дополнительный источник L-карнитина, коэнзима Q10 и витамина B12. Сироп для энергии, выносливости и гармоничного развития ребёнка."
+    primary={{ href: '#sostav', label: 'Состав сиропа' }}
+    secondary={{ href: '#dozirovka', label: 'Дозировка по возрасту' }}
+  >
+    <PackCard
+      name="PanKartin"
+      sub="Сила · Энергия · Аппетит"
+      items={[
+        { name: 'L-карнитин',   value: '400 мг'   },
+        { name: 'Коэнзим Q10',  value: '5 мг'     },
+        { name: 'Витамин B12',  value: '0,5 мкг'  },
+      ]}
+      form="Форма выпуска: сироп 150 мл"
+      formIcon="droplet"
+    />
+  </ProductHero>
+
+  <PromoBanner
+    image="/pankartin.jpeg"
+    alt="Упаковка PanKartin — сироп 150 мл"
+    eyebrow="PanKartin"
+    title="«Зарядись энергией!»"
+    description="L-карнитин, коэнзим Q10 и витамин B12 в детском сиропе — для энергии, выносливости и гармоничного развития ребёнка."
+  />
+
+  <Section>
+    <SectionHead center eyebrow="Главное" title="Что даёт PanKartin ребёнку" />
+    <FuncGrid
+      cols={3}
+      items={[
+        { icon: 'zap',          title: 'Обеспечивает энергией', text: 'Поддерживает организм энергией для активного дня и учёбы.' },
+        { icon: 'shield',       title: 'Повышает устойчивость', text: 'Увеличивает сопротивляемость организма к нагрузкам и инфекциям.' },
+        { icon: 'trending-up',  title: 'Способствует росту',    text: 'Поддерживает физиологический рост и развитие ребёнка.' },
+      ]}
+    />
+  </Section>
+
+  <Section soft id="sostav">
+    <SectionHead
+      eyebrow="Состав"
+      title="Действующие вещества"
+      lead="PanKartin — дополнительный источник L-карнитина, коэнзима Q10 и витамина B12."
+    />
+    <Compo
+      cols={3}
+      items={[
+        { value: '400 мг',  label: 'L-карнитин'  },
+        { value: '5 мг',    label: 'Коэнзим Q10' },
+        { value: '0,5 мкг', label: 'Витамин B12' },
+      ]}
+    />
+  </Section>
+
+  <Section>
+    <SectionHead
+      eyebrow="Показания к применению"
+      title="Когда полезен PanKartin"
+      lead="Способствует улучшению метаболических процессов, повышению работоспособности и физической выносливости, концентрации внимания и памяти."
+    />
+    <Checklist
+      items={[
+        'Улучшает когнитивные функции: память, внимание, мышление, скорость реакции',
+        'Восстанавливает речевые и голосовые функции',
+        'Нормализует психоэмоциональное состояние, настроение, сон, аппетит',
+        'Уменьшает тревожность',
+        'Повышает иммунитет',
+        'Обладает выраженной детоксикационной активностью',
+        'Повышает сопротивляемость к инфекционным заболеваниям',
+        'Профилактика быстрой утомляемости',
+        'Повышает устойчивость к стрессовым ситуациям',
+        'Повышает сопротивляемость к агрессивным факторам',
+        'Повышает физическую и умственную выносливость',
+        'Применяется в комплексном лечении ожирения',
+      ]}
+    />
+  </Section>
+
+  <Section soft id="dozirovka">
+    <SectionHead
+      eyebrow="Способ применения и дозы"
+      title="Дозировка по возрасту"
+      lead="Принимать внутрь 1 раз в день во время еды. Перед употреблением взболтать. Продолжительность приёма — 1 месяц."
+    />
+    <DataTable
+      headers={['Возраст ребёнка', 'Разовая доза сиропа']}
+      rows={[
+        ['Дети от 1,5 до 3 лет',   '2,5 мл'],
+        ['Дети от 3 до 7 лет',     '5,0 мл'],
+        ['Дети от 7 до 11 лет',    '10 мл'],
+        ['Дети от 11 до 14 лет',   '15 мл'],
+      ]}
+    />
+    <p class="lead" style="margin-top:14px;font-size:.92rem">
+      Приём — 1 раз в день во время еды. Перед употреблением взболтать.
+      Продолжительность приёма — 1&nbsp;месяц.
+    </p>
+  </Section>
+
+  <Section>
+    <Split>
+      <div slot="left">
+        <span class="eyebrow">Зачем детям L-карнитин</span>
+        <h2>Симптомы недостатка L-карнитина у детей</h2>
+        <p class="lead" style="margin-top:14px">
+          При недостатке L-карнитина в организме ребёнка отмечаются:
+        </p>
+        <IndList
+          style="margin-top:18px"
+          items={[
+            'Ослабление иммунитета',
+            'Замедление умственного и физического развития',
+            'Нарушение аппетита',
+            'Сбои в функционировании основных систем и органов',
+            'Быстрая утомляемость и мышечная слабость',
+            'Снижение жизнеспособности',
+          ]}
+        />
+      </div>
+      <InfoCard slot="right" accent title="Почему важен дополнительный источник">
+        <p style="color:var(--muted);margin-top:10px">
+          У детей раннего возраста собственный синтез L-карнитина покрывает лишь
+          около 1% от необходимого количества. Только после 15 лет эндогенный
+          синтез начинает работать в полной мере.
+        </p>
+        <p style="margin-top:14px">
+          <b>Можно ли устранить недостаток?</b><br />
+          Да — дополнительным источником L-карнитина для детей служит препарат PanKartin.
+        </p>
+      </InfoCard>
+    </Split>
+
+    <h3 style="margin-top:48px;margin-bottom:16px">
+      Суточная норма потребления L-карнитина для детей
+    </h3>
+    <DataTable
+      headers={['Возраст', 'Суточная норма']}
+      rows={[
+        ['До 12 месяцев',         '10–15 мг/сутки'],
+        ['От 1 года до 3 лет',    '30–50 мг/сутки'],
+        ['От 4 до 6 лет',         '60–90 мг/сутки'],
+        ['От 7 до 18 лет',        '100–300 мг/сутки'],
+      ]}
+    />
+  </Section>
+
+  <Section soft>
+    <SectionHead
+      center
+      eyebrow="Результаты исследования"
+      title="Дети с нормальными параметрами вегетативной нервной системы"
+      lead="Увеличение количества детей с нормальными показателями, % от исходного числа."
+    />
+    <BarChart
+      bars={[
+        { heightPct: 76, value: '19%', variant: 'b1', label: '1 группа' },
+        { heightPct: 80, value: '20%', variant: 'b2', label: '2 группа' },
+        { heightPct: 32, value: '8%',  variant: 'b3', label: '3 группа' },
+      ]}
+      legend={[
+        { color: '#e0a800', text: '1 группа — L-карнитин' },
+        { color: '#c0392b', text: '2 группа — комбинация L-карнитина и коэнзима Q10' },
+        { color: '#7da838', text: '3 группа — плацебо' },
+      ]}
+    />
+    <p class="lead" style="text-align:center;max-width:640px;margin:24px auto 0;font-size:.95rem">
+      Приведённые данные показывают, что для повышения устойчивости подростков
+      к психоэмоциональным нагрузкам целесообразно сочетанное применение
+      L-карнитина и коэнзима Q10.
+    </p>
+  </Section>
+
+  <CtaBand
+    title="Зарядись энергией вместе с PanKartin!"
+    description="Энергия, выносливость и хорошее настроение для активного и здорового роста вашего ребёнка."
+  >
+    <a href="/#contacts" class="btn btn-white">Где купить</a>
+    <a href="/#products" class="btn btn-outline-white">Вся продукция</a>
+  </CtaBand>
+</BaseLayout>

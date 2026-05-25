@@ -1,0 +1,36 @@
+---
+import HeroPills from './HeroPills.astro';
+import { products } from '../data/products';
+
+const stats = [
+  { value: String(products.length), label: 'препарата в линейке' },
+  { value: 'ISO 9001:2015',          label: 'сертифицированное качество' },
+  { value: '2–60+',                  label: 'возраст применения, лет' },
+];
+---
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow">Эксклюзивный дистрибьютор</span>
+      <h1>Препараты для <span class="hl">здоровья</span> всей семьи</h1>
+      <p class="lead">
+        PanPharm поставляет линейку добавок для подвижности суставов, энергии
+        и гармоничного развития ребёнка — с натуральными ингредиентами
+        и сертифицированным качеством.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">Смотреть продукцию →</a>
+        <a href="#contacts" class="btn btn-ghost">Связаться с нами</a>
+      </div>
+      <div class="hero-stats">
+        {stats.map((s) => (
+          <div><b>{s.value}</b><small>{s.label}</small></div>
+        ))}
+      </div>
+    </div>
+    <HeroPills />
+  </div>
+  <svg class="wave" viewBox="0 0 1440 54" preserveAspectRatio="none">
+    <path fill="#ffffff" d="M0,32 C240,64 480,0 720,16 C960,32 1200,64 1440,28 L1440,54 L0,54 Z" />
+  </svg>
+</section>

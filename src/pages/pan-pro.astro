@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PackCard from '../components/PackCard.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Compo from '../components/Compo.astro';
+import IndGroup from '../components/IndGroup.astro';
+import Split from '../components/Split.astro';
+import Steps from '../components/Steps.astro';
+import Step from '../components/Step.astro';
+import InfoCard from '../components/InfoCard.astro';
+import IndList from '../components/IndList.astro';
+import PieChart from '../components/PieChart.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const product = products.find((p) => p.slug === 'pan-pro')!;
+---
+<BaseLayout
+  theme={product.theme}
+  active={product.slug}
+  productDisclaimer
+  title="Pan Pro — комплекс для суставов и связок | PanPharm"
+  description="Pan Pro — глюкозамин, хондроитин, МСМ и коллаген для здоровья суставов и позвоночника. Состав, показания, режим дозирования."
+>
+  <ProductHero
+    product={product}
+    badge="Глюкозамин + Хондроитин + МСМ с коллагеном"
+    slogan="«Мы возвращаем радость движения!»"
+    description="Комплекс для суставов и связок: восполняет дефицит коллагена, хондроитина и глюкозамина, поддерживает упругость и прочность хрящевой ткани."
+    primary={{ href: '#sostav', label: 'Состав препарата' }}
+    secondary={{ href: '#dozirovka', label: 'Как принимать' }}
+  >
+    <PackCard
+      name="Pan Pro"
+      sub="Complex for joints and ligaments"
+      items={[
+        { name: 'Глюкозамина сульфат',          value: '300 мг' },
+        { name: 'Сульфат хондроитина',          value: '250 мг' },
+        { name: 'Метилсульфонилметан (МСМ)',    value: '100 мг' },
+        { name: 'Коллаген',                      value: '100 мг' },
+      ]}
+      form="Форма выпуска: 60 таблеток"
+      formIcon="package"
+    />
+  </ProductHero>
+
+  <Section id="sostav">
+    <SectionHead
+      eyebrow="Состав"
+      title="Содержание активных веществ в одной таблетке"
+      lead="Четыре компонента работают вместе, восполняя дефицит строительных элементов хрящевой ткани."
+    />
+    <Compo
+      cols={2}
+      items={[
+        { value: '300 мг', label: 'Глюкозамина сульфат' },
+        { value: '250 мг', label: 'Сульфат хондроитина' },
+        { value: '100 мг', label: 'Метилсульфонилметан (МСМ)' },
+        { value: '100 мг', label: 'Коллаген' },
+      ]}
+    />
+  </Section>
+
+  <Section soft>
+    <SectionHead
+      eyebrow="Показания"
+      title="Когда применяется Pan Pro"
+      lead="Применяют у взрослых при следующих состояниях и заболеваниях."
+    />
+    <IndGroup
+      title="Дегенеративно-дистрофические заболевания суставов и позвоночника"
+      items={['Лечение и профилактика остеоартроза и остеохондроза позвоночника']}
+    />
+    <IndGroup
+      title="Дегенеративно-ревматические заболевания"
+      items={[
+        'Остеоартроз различной локализации: коксартроз, гонартроз, артроз мелких суставов',
+        'Спондилёз',
+      ]}
+    />
+    <IndGroup
+      title="Период восстановления"
+      items={['Реабилитация после перенесённых травм и оперативных вмешательств на суставах']}
+    />
+  </Section>
+
+  <Section id="dozirovka">
+    <Split>
+      <div slot="left">
+        <span class="eyebrow">Режим дозирования</span>
+        <h2>Как принимать препарат</h2>
+        <p class="lead" style="margin-top:14px">
+          Препарат следует принимать внутрь 2 раза в сутки, запивая небольшим
+          количеством воды.
+        </p>
+        <Steps>
+          <Step n={1} title="Начальный курс">
+            Рекомендуемая продолжительность начального курса лечения составляет 6 месяцев.
+          </Step>
+          <Step n={2} title="Сохранение эффекта">
+            Терапевтическое действие препарата сохраняется в течение 3–5 месяцев
+            после его отмены — в зависимости от локализации и стадии заболевания.
+          </Step>
+          <Step n={3} title="Повторные курсы">
+            При необходимости возможно проведение повторных курсов лечения,
+            продолжительность которых определяется индивидуально.
+          </Step>
+        </Steps>
+      </div>
+      <InfoCard slot="right" accent title="Кратко о приёме">
+        <ul class="pack-list">
+          <li><span>Приём</span><b>2 раза в сутки</b></li>
+          <li><span>Запивать</span><b>водой</b></li>
+          <li><span>Начальный курс</span><b>6 месяцев</b></li>
+          <li><span>Эффект после отмены</span><b>3–5 месяцев</b></li>
+          <li><span>Форма выпуска</span><b>60 таблеток</b></li>
+        </ul>
+      </InfoCard>
+    </Split>
+  </Section>
+
+  <Section soft>
+    <SectionHead
+      center
+      eyebrow="Механизм действия"
+      title="Многокомпонентный механизм действия Pan Pro"
+      lead="Препарат отвечает на признаки разрушения хрящевой ткани целенаправленным действием."
+    />
+    <Split>
+      <InfoCard slot="left">
+        <h3 style="color:#c0392b">Признаки деструкции хрящевой ткани</h3>
+        <IndList
+          style="margin-top:14px"
+          items={[
+            'Усиленный катаболизм компонентов хрящевой ткани',
+            'Повреждение хондроцитов и потеря матриксом протеогликанов',
+            'Высвобождение ферментов, повреждающих коллаген и протеогликаны',
+          ]}
+        />
+      </InfoCard>
+      <InfoCard slot="right" accent title="Действие Pan Pro">
+        <IndList
+          style="margin-top:14px"
+          items={[
+            'Стимуляция анаболических процессов в хряще',
+            'Регуляция метаболизма хондроцитов, синтез гиалуроновой кислоты, нормальных протеогликанов и коллагена II типа',
+            'Угнетение активности гиалуронидазы, антиоксидантная активность',
+          ]}
+        />
+      </InfoCard>
+    </Split>
+
+    <div class="split" style="margin-top:30px">
+      <InfoCard icon="circle-check" iconColor="#28a745" title="Здоровый сустав">
+        <p style="color:var(--muted);margin-top:10px">
+          Здоровые хондроциты — основные клетки хрящевой ткани — вырабатывают
+          достаточное количество коллагена и хондроитина, структурных элементов хряща.
+        </p>
+      </InfoCard>
+      <InfoCard icon="circle-x" iconColor="#c0392b" title="Нездоровый сустав">
+        <p style="color:var(--muted);margin-top:10px">
+          Хрящ истончается, его поверхность теряет гладкость, число хондроцитов
+          снижается — образование новой хрящевой ткани останавливается.
+        </p>
+      </InfoCard>
+    </div>
+  </Section>
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Результаты"
+      title="Оценка общего состояния больных"
+      lead="Через 3 месяца после окончания приёма препарата — сравнение группы Pan Pro и контрольной группы."
+    />
+    <div class="charts">
+      <PieChart
+        title="Группа Pan Pro"
+        titleTone="accent"
+        variant="panpro"
+        ariaLabel="Pan Pro: 75,8% значительное улучшение, 20,8% незначительное, 3,4% без эффекта"
+        legend={[
+          { swatch: 'g1', label: '75,8% — значительное и выраженное улучшение' },
+          { swatch: 'g2', label: '20,8% — незначительное улучшение' },
+          { swatch: 'g3', label: '3,4% — отсутствие эффекта' },
+        ]}
+      />
+      <PieChart
+        title="Контрольная группа"
+        titleTone="muted"
+        variant="control"
+        ariaLabel="Контроль: 46,2% значительное улучшение, 46,1% незначительное, 7,7% без эффекта"
+        legend={[
+          { swatch: 'g1', label: '46,2% — значительное и выраженное улучшение' },
+          { swatch: 'g2', label: '46,1% — незначительное улучшение' },
+          { swatch: 'g3', label: '7,7% — отсутствие эффекта' },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <CtaBand
+    title="Восполняет дефицит коллагена, хондроитина и глюкозамина"
+    description="Хондроитин и глюкозамин — для упругости и влагонасыщенности хряща, коллагеновые волокна — для прочности."
+  >
+    <a href="/#contacts" class="btn btn-white">Где купить</a>
+    <a href="/#products" class="btn btn-outline-white">Вся продукция</a>
+  </CtaBand>
+</BaseLayout>

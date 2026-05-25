@@ -1,0 +1,18 @@
+---
+import Logo from './Logo.astro';
+import NavToggle from './NavToggle.tsx';
+import { products } from '../data/products';
+import type { ActivePage } from '../types/product';
+
+interface Props {
+  active?: ActivePage;
+}
+
+const { active } = Astro.props;
+---
+<header class="site-header">
+  <div class="container nav">
+    <Logo />
+    <NavToggle client:idle products={products} active={active} />
+  </div>
+</header>

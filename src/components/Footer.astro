@@ -1,0 +1,31 @@
+---
+import Logo from './Logo.astro';
+import { products } from '../data/products';
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <Logo />
+        <p>
+          Эксклюзивный дистрибьютор препаратов для здоровья всей семьи.
+          Сертифицированное качество ISO 9001:2015.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Продукция</h4>
+        {products.map((p) => <a href={`/${p.slug}`}>{p.name}</a>)}
+      </div>
+      <div class="footer-col">
+        <h4>Навигация</h4>
+        <a href="/">Главная</a>
+        <a href="/#products">Продукция</a>
+        <a href="/#contacts">Контакты</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PanPharm. Все права защищены.</span>
+      <span>БАД. Не является лекарственным средством.</span>
+    </div>
+  </div>
+</footer>

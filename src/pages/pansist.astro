@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductHero from '../components/ProductHero.astro';
+import PackCard from '../components/PackCard.astro';
+import Section from '../components/Section.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FuncGrid from '../components/FuncGrid.astro';
+import Compo from '../components/Compo.astro';
+import Checklist from '../components/Checklist.astro';
+import DataTable from '../components/DataTable.astro';
+import IndList from '../components/IndList.astro';
+import Split from '../components/Split.astro';
+import InfoCard from '../components/InfoCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const product = products.find((p) => p.slug === 'pansist')!;
+---
+<BaseLayout
+  theme={product.theme}
+  active={product.slug}
+  productDisclaimer
+  title="Pansist — D-манноза и экстракт клюквы для здоровья мочевыводящих путей | PanPharm"
+  description="Pansist — D-манноза 200 мг + экстракт клюквы 250 мг в одной капсуле. Борьба с урологическими инфекциями, профилактика рецидивов цистита, безопасно при беременности."
+>
+  <ProductHero
+    product={product}
+    badge="D-манноза · Экстракт клюквы · 30 капсул"
+    slogan="«Здоровье мочевыводящих путей»"
+    description="Комплексная защита и поддержание функции мочевыводящих путей. Pansist помогает в борьбе с урологическими инфекциями и в профилактике рецидивов цистита — без системного действия, безопасно для применения при сахарном диабете и беременности."
+    primary={{ href: '#sostav', label: 'Состав препарата' }}
+    secondary={{ href: '#dozirovka', label: 'Как принимать' }}
+  >
+    <PackCard
+      name="Pansist"
+      sub="D-манноза + Клюква"
+      items={[
+        { name: 'D-манноза',           value: '200 мг' },
+        { name: 'Экстракт плодов клюквы', value: '250 мг' },
+      ]}
+      form="Форма выпуска: 30 капсул"
+      formIcon="pill"
+    />
+  </ProductHero>
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Главное"
+      title="Что даёт Pansist"
+      lead="Клинически подтверждённая комбинация D-маннозы и антоцианов клюквы — двойной удар по бактериальным инфекциям мочевыводящих путей."
+    />
+    <FuncGrid
+      cols={3}
+      items={[
+        { icon: 'shield-check', title: 'Борьба с инфекциями',       text: 'Помогает в комплексной терапии острого и хронического цистита и других урологических инфекций.' },
+        { icon: 'rotate-ccw',   title: 'Профилактика рецидивов',    text: 'Блокирует прикрепление E. coli и других патогенов к слизистой мочевого пузыря.' },
+        { icon: 'heart-pulse',  title: 'Поддержка после лечения',   text: 'Восстановление после антибиотикотерапии и нормализация микрофлоры.' },
+      ]}
+    />
+  </Section>
+
+  <Section soft id="sostav">
+    <SectionHead
+      eyebrow="Состав"
+      title="Содержание в 1 капсуле"
+      lead="Два компонента с разным механизмом действия, дополняющие друг друга: D-манноза «отрывает» бактерии от стенок, антоцианы клюквы препятствуют их размножению."
+    />
+    <Compo
+      cols={2}
+      items={[
+        { value: '200 мг', label: 'D-манноза'              },
+        { value: '250 мг', label: 'Экстракт плодов клюквы' },
+      ]}
+    />
+    <div class="split" style="margin-top:36px">
+      <InfoCard accent icon="droplets" title="D-манноза">
+        <p style="color:var(--muted);margin-top:10px">
+          Взаимодействует более чем с <b>240 видами белков</b>, важных для
+          иммунной системы. Уровни D-маннозы в крови, моче и слизи существенно
+          влияют на прикрепление бактерий к оболочкам тканей и предотвращают
+          распространение патогенов. <b>Способствует нормализации микрофлоры.</b>
+        </p>
+      </InfoCard>
+      <InfoCard icon="cherry" title="Клюква">
+        <p style="color:var(--muted);margin-top:10px">
+          Активная часть — <b>антоцианы</b>, которые предотвращают размножение
+          бактерий в клетках мочеполовой системы. <b>Защищает мочеполовую
+          систему от инфекций.</b>
+        </p>
+      </InfoCard>
+    </div>
+  </Section>
+
+  <Section>
+    <SectionHead
+      eyebrow="Показания к применению"
+      title="При урологических инфекциях"
+      lead="Pansist назначают как самостоятельно, так и в комплексе с антибиотикотерапией."
+    />
+    <Checklist
+      items={[
+        'Острый цистит',
+        'Хронический цистит',
+        'Профилактика рецидивов цистита',
+        'Для повышения эффективности антибиотикотерапии',
+        'Восстановление после антибиотикотерапии',
+        'Поддержание здоровья мочевыводящих путей',
+      ]}
+    />
+  </Section>
+
+  <Section soft id="dozirovka">
+    <SectionHead
+      eyebrow="Способ применения и дозы"
+      title="Как принимать Pansist"
+      lead="Капсулы принимают желательно во время еды, запивая достаточным количеством воды."
+    />
+    <DataTable
+      headers={['Категория', 'Суточная доза']}
+      rows={[
+        ['Взрослые и дети старше 12 лет',  'по 1 капсуле 3 раза в день'],
+        ['При беременности и лактации',    'по 1 капсуле 2 раза в день'],
+      ]}
+    />
+    <p class="lead" style="margin-top:14px;font-size:.92rem">
+      <b>Безопасность:</b> не оказывает системного действия и не влияет на
+      уровень сахара в крови — может применяться при сахарном диабете.
+    </p>
+  </Section>
+
+  <Section>
+    <SectionHead
+      eyebrow="Механизм действия"
+      title="Pansist блокирует прикрепление бактерий"
+      lead="D-манноза в течение 30–60 минут попадает в мочевой пузырь в неизменном виде и связывает фимбрии патогенных бактерий, не давая им закрепиться на стенках."
+    />
+    <Split>
+      <InfoCard slot="left" icon="ban" title="Эффективность">
+        <p style="color:var(--muted);margin-top:10px">
+          Блокирует прикрепление к слизистой мочевого пузыря:
+        </p>
+        <IndList
+          style="margin-top:14px"
+          items={[
+            'Escherichia coli',
+            'Klebsiella',
+            'Proteus',
+            'Enterococcus',
+            'Streptococcus',
+          ]}
+        />
+      </InfoCard>
+      <InfoCard slot="right" accent icon="shield-check" title="Безопасность">
+        <p style="color:var(--muted);margin-top:10px">
+          <b>Не оказывает системного действия.</b> В течение 30–60 минут
+          попадает в мочевой пузырь в неизменном виде.
+        </p>
+        <p style="color:var(--muted);margin-top:10px">
+          <b>Не влияет на уровень сахара в крови</b> — препарат можно применять
+          при сахарном диабете.
+        </p>
+      </InfoCard>
+    </Split>
+  </Section>
+
+  <Section soft>
+    <SectionHead
+      center
+      eyebrow="Цистит"
+      title="Причины и факторы риска развития цистита"
+      lead="Понимание триггеров заболевания помогает выстроить грамотную профилактику."
+    />
+    <Split>
+      <InfoCard slot="left" icon="alert-triangle" title="Факторы риска">
+        <IndList
+          style="margin-top:14px"
+          items={[
+            'Незащищённый половой контакт',
+            'Использование контрацептивных кремов и диафрагмы',
+            'Ослабленный иммунитет',
+            'Длительное пребывание в больнице',
+            'Низкие уровни эстрогена',
+            'Стресс и переохлаждение',
+          ]}
+        />
+      </InfoCard>
+      <InfoCard slot="right" icon="biohazard" title="Причины">
+        <IndList
+          style="margin-top:14px"
+          items={[
+            'Вирусная, бактериальная или грибковая инфекция',
+            'Химиотерапевтические препараты',
+            'Мочевые катетеры',
+            'Излучение и наличие камней',
+            'Сопутствующие заболевания: волчанка, опухоли, сахарный диабет',
+          ]}
+        />
+      </InfoCard>
+    </Split>
+  </Section>
+
+  <Section>
+    <SectionHead
+      center
+      eyebrow="Клинические данные"
+      title="Снижение бактериурии на фоне применения Pansist"
+      lead="По результатам исследования у беременных с рецидивирующими циститами — статистически значимое снижение бактериурии через 3 и 6 месяцев приёма."
+    />
+    <DataTable
+      headers={['Микроорганизм', 'До лечения', 'Через 3 мес.', 'Через 6 мес.']}
+      rows={[
+        ['Escherichia coli',           '35–40%', '15–20%', '15%'],
+        ['Enterococcus faecalis',      '20–35%', '—',      '—'  ],
+        ['Streptococcus haemolyticus', '20%',    '0%',     '0%' ],
+        ['Klebsiella pneumoniae',      '5%',     '10%',    '5–10%'],
+        ['Staphylococcus epidermidis', '15%',    '15%',    '20%'],
+      ]}
+    />
+    <p class="lead" style="margin-top:14px;font-size:.9rem">
+      Источник: «Современные подходы к терапии и профилактике рецидивирующих
+      циститов у беременных с применением D-маннозы и клюквы» —
+      Эффективная фармакотерапия. 2021. Т. 17. № 9. С. 6–14.
+      DOI 10.33978/2307-3586-2021-17-9-6-14. Различия значимы по
+      Хи-критерию Пирсона с p&lt;0,01.
+    </p>
+  </Section>
+
+  <CtaBand
+    title="Здоровье мочевыводящих путей под защитой"
+    description="D-манноза и клюква в одной капсуле — помогают победить цистит, предотвратить рецидивы и поддержать организм после антибиотиков."
+  >
+    <a href="/#contacts" class="btn btn-white">Где купить</a>
+    <a href="/#products" class="btn btn-outline-white">Вся продукция</a>
+  </CtaBand>
+</BaseLayout>
