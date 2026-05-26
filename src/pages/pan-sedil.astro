@@ -11,17 +11,19 @@ import IndList from '../components/IndList.astro';
 import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pan-sedil')!;
+const description = "Pan-Sedil — мягкое успокаивающее средство на растительной основе с L-триптофаном, магнием и витамином B6. При нарушениях сна, неврозах и стрессе. Не вызывает привыкания.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="Pan-Sedil — пассифлора, мелисса и боярышник для сна и спокойствия | PanPharm"
-  description="Pan-Sedil — мягкое успокаивающее средство на растительной основе с L-триптофаном, магнием и витамином B6. При нарушениях сна, неврозах и стрессе. Не вызывает привыкания."
+  description={description}
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}

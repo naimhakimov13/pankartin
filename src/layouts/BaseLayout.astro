@@ -18,6 +18,8 @@ interface Props {
   image?: string;
   /** og:type — "website" for home/landing, "article" for product detail pages. */
   ogType?: 'website' | 'article';
+  /** Schema.org JSON-LD object (Organization, Product, etc.) — emitted as <script type="application/ld+json"> */
+  schema?: Record<string, unknown>;
 }
 
 const {
@@ -28,6 +30,7 @@ const {
   productDisclaimer = false,
   image = '/logo.png',
   ogType = 'website',
+  schema,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -42,6 +45,30 @@ const locale = 'ru_RU';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-L0EQ5HRQFY"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L0EQ5HRQFY');
+    </script>
+
+    {/*
+      Yandex.Metrika — uncomment and replace 00000000 with your counter ID
+      (get it at https://metrika.yandex.ru → Counters → Settings → Code).
+
+      <script is:inline>
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(00000000, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+      </script>
+      <noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    */}
 
     <link rel="canonical" href={canonicalURL} />
 
@@ -58,8 +85,13 @@ const locale = 'ru_RU';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
     <meta name="google-site-verification" content="-qlEz4Mdaq-93F28UeQwCLTkTFT2LnDLdTxBrlo39FU" />
+    <meta name="yandex-verification" content="REPLACE_WITH_YANDEX_CODE" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {schema && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+    )}
   </head>
   <body class={theme}>
     <Header active={active} />

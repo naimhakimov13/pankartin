@@ -13,18 +13,20 @@ import InfoCard from '../components/InfoCard.astro';
 import IndList from '../components/IndList.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pano-pan-baby')!;
+const description = "Pano-Pan baby — капли-нейрорегулятор для головного мозга: память, внимание, концентрация и поддержка нервной системы ребёнка.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="Pano-Pan baby — нейрорегулятор для детей | PanPharm"
-  description="Pano-Pan baby — капли-нейрорегулятор для головного мозга: память, внимание, концентрация и поддержка нервной системы ребёнка."
+  description={description}
   image="/pano-pan-baby.jpeg"
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}

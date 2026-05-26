@@ -13,6 +13,7 @@ interface Props {
 }
 
 const { image, alt, eyebrow, title, description } = Astro.props;
+const webp = image.replace(/\.jpe?g$/i, '.webp');
 ---
 <section class="product-banner" aria-label={alt}>
   <div class="container product-banner-inner">
@@ -21,11 +22,14 @@ const { image, alt, eyebrow, title, description } = Astro.props;
       <h2>{title}</h2>
       <p class="lead" style="margin-top:14px">{description}</p>
     </div>
-    <img
-      class="product-banner-img"
-      src={image}
-      alt={alt}
-      loading="lazy"
-    />
+    <picture style="display:block">
+      <source srcset={webp} type="image/webp" />
+      <img
+        class="product-banner-img"
+        src={image}
+        alt={alt}
+        loading="lazy"
+      />
+    </picture>
   </div>
 </section>

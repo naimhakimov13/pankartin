@@ -14,18 +14,20 @@ import IndList from '../components/IndList.astro';
 import BarChart from '../components/BarChart.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pankartin')!;
+const description = "PanKartin — сироп с L-карнитином, коэнзимом Q10 и витамином B12 для энергии, роста и развития ребёнка. Состав, показания, дозировка.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="PanKartin — детский сироп с L-карнитином | PanPharm"
-  description="PanKartin — сироп с L-карнитином, коэнзимом Q10 и витамином B12 для энергии, роста и развития ребёнка. Состав, показания, дозировка."
+  description={description}
   image="/pankartin.jpeg"
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}

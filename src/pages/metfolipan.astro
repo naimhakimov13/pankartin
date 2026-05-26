@@ -14,18 +14,20 @@ import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { Icon } from 'astro-icon/components';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'metfolipan')!;
+const description = "MetfoliPan — активная форма фолиевой кислоты (метилфолат 400 мкг) с витаминами B6 и B12. Для женщин, планирующих беременность, при анемии и в косметологии.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="MetfoliPan — метилфолат, витамины B6 и B12 | PanPharm"
-  description="MetfoliPan — активная форма фолиевой кислоты (метилфолат 400 мкг) с витаминами B6 и B12. Для женщин, планирующих беременность, при анемии и в косметологии."
+  description={description}
   image="/metfolipan.jpeg"
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}

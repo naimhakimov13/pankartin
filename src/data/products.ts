@@ -1,5 +1,25 @@
 import type { Product } from '../types/product';
 
+const PRODUCT_IMAGES = new Set([
+  'pankartin', 'pano-pan-baby', 'metfolipan', 'oleopan', 'pan-bio',
+  'pannevrol', 'pantoren', 'pantovit', 'panvit-mama', 'protektol-pan',
+]);
+
+/** Build a Schema.org Product object suitable for JSON-LD. */
+export function buildProductSchema(product: Product, site: URL | undefined, description: string) {
+  const image = PRODUCT_IMAGES.has(product.slug) ? `/${product.slug}.jpeg` : '/logo.png';
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description,
+    image: new URL(image, site).toString(),
+    url: new URL(`/${product.slug}`, site).toString(),
+    brand: { '@type': 'Brand', name: 'PanPharm' },
+    category: product.tag,
+  };
+}
+
 /**
  * Single source of truth for the product catalogue.
  * Consumed by Header (nav links), Footer (Продукция column), and ProductsGrid

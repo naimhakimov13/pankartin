@@ -12,18 +12,20 @@ import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pantoren')!;
+const description = "Pantoren Kids — витаминный коктейль для детей: липосомальный кальций с биодоступностью 99%, магний, цинк, витамины D3 и K2. Для роста костей и зубов с 6 месяцев.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="Pantoren Kids — липосомальный кальций для детей | PanPharm"
-  description="Pantoren Kids — витаминный коктейль для детей: липосомальный кальций с биодоступностью 99%, магний, цинк, витамины D3 и K2. Для роста костей и зубов с 6 месяцев."
+  description={description}
   image="/pantoren.jpeg"
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}

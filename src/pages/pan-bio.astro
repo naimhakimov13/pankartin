@@ -14,18 +14,20 @@ import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pan-bio')!;
+const description = "Pan-Bio — синбиотик: Bifidobacterium BB-12, Lactobacillus rhamnosus GG и L. acidophilus с инулином. Лечение и профилактика дисбактериоза, поддержка при антибиотикотерапии. Для всей семьи с 2 лет.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="Pan-Bio — пробиотик с бифидо- и лактобактериями + инулин | PanPharm"
-  description="Pan-Bio — синбиотик: Bifidobacterium BB-12, Lactobacillus rhamnosus GG и L. acidophilus с инулином. Лечение и профилактика дисбактериоза, поддержка при антибиотикотерапии. Для всей семьи с 2 лет."
+  description={description}
   image="/pan-bio.jpeg"
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}

@@ -13,18 +13,20 @@ import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'protektol-pan')!;
+const description = "Protektol-Pan — индол-3-карбинол 500 мг + катехины зелёного чая (EGCG) и эссенциальные фосфолипиды. Поддержка гормонального баланса, онкопротекция, защита репродуктивных органов у мужчин и женщин.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="Protektol-Pan — индол-3-карбинол и EGCG для гормонального баланса | PanPharm"
-  description="Protektol-Pan — индол-3-карбинол 500 мг + катехины зелёного чая (EGCG) и эссенциальные фосфолипиды. Поддержка гормонального баланса, онкопротекция, защита репродуктивных органов у мужчин и женщин."
+  description={description}
   image="/protektol-pan.jpeg"
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}

@@ -13,18 +13,20 @@ import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'panvit-mama')!;
+const description = "Panvit-mama — 13 витаминов и 7 минералов в одной капсуле для женщин на этапе планирования, беременности и кормления. Одной капсулы достаточно для матери и ребёнка.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="Panvit-mama — мультивитамины для беременных и кормящих | PanPharm"
-  description="Panvit-mama — 13 витаминов и 7 минералов в одной капсуле для женщин на этапе планирования, беременности и кормления. Одной капсулы достаточно для матери и ребёнка."
+  description={description}
   image="/panvit-mama.jpeg"
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}

@@ -8,11 +8,23 @@ import Features from '../components/Features.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ContactGrid from '../components/ContactGrid.astro';
 import { products } from '../data/products';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'PanPharm',
+  url: Astro.site?.toString(),
+  logo: new URL('/logo.png', Astro.site).toString(),
+  description:
+    'PanPharm — эксклюзивный дистрибьютор препаратов для здоровья всей семьи: суставы, энергия, развитие мозга, беременность.',
+  sameAs: [] as string[],
+};
 ---
 <BaseLayout
   active="home"
   title="PanPharm — препараты для здоровья всей семьи"
   description="PanPharm — эксклюзивный дистрибьютор препаратов Pan Pro, PanKartin, Pano-Pan baby и MetfoliPan для суставов, энергии, развития мозга и поддержки беременности."
+  schema={organizationSchema}
 >
   <Hero />
 

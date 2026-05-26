@@ -13,17 +13,19 @@ import InfoCard from '../components/InfoCard.astro';
 import IndList from '../components/IndList.astro';
 import PieChart from '../components/PieChart.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products } from '../data/products';
+import { products, buildProductSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pan-pro')!;
+const description = "Pan Pro — глюкозамин, хондроитин, МСМ и коллаген для здоровья суставов и позвоночника. Состав, показания, режим дозирования.";
 ---
 <BaseLayout
   theme={product.theme}
   active={product.slug}
   productDisclaimer
   title="Pan Pro — комплекс для суставов и связок | PanPharm"
-  description="Pan Pro — глюкозамин, хондроитин, МСМ и коллаген для здоровья суставов и позвоночника. Состав, показания, режим дозирования."
+  description={description}
   ogType="article"
+  schema={buildProductSchema(product, Astro.site, description)}
 >
   <ProductHero
     product={product}
