@@ -23,6 +23,8 @@ const product = products.find((p) => p.slug === 'oleopan')!;
   productDisclaimer
   title="OleoPan — магний бисглицинат, цитрат магния и витамин B6 | PanPharm"
   description="OleoPan — две активные формы магния (бисглицинат и цитрат) с витамином B6. Восполняет дефицит магния, снижает тревожность, поддерживает нервную и сердечно-сосудистую системы."
+  image="/oleopan.jpeg"
+  ogType="article"
 >
   <ProductHero
     product={product}
@@ -162,7 +164,7 @@ const product = products.find((p) => p.slug === 'oleopan')!;
       title="Дефицит магния во время беременности"
       lead="Недостаток магния отражается на здоровье матери, развитии плода и состоянии новорождённого. Своевременное восполнение помогает снизить риски."
     />
-    <div class="split" style="grid-template-columns:repeat(3,1fr);gap:24px">
+    <div class="split split--3">
       <IndGroup
         title="Мать"
         items={[

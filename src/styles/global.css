@@ -99,6 +99,7 @@ p{color:var(--ink);}
   border-bottom:1px solid var(--line);
 }
 .nav{display:flex;align-items:center;justify-content:space-between;height:74px;}
+.nav-backdrop{display:none;}
 .logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.16rem;}
 .logo .mark{
   width:38px;height:38px;border-radius:11px;flex:none;
@@ -366,6 +367,7 @@ p{color:var(--ink);}
    БЛОКИ КОНТЕНТА ПРОДУКТА
    ============================================================ */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start;}
+.split.split--3{grid-template-columns:repeat(3,1fr);gap:24px;}
 
 /* список показаний */
 .ind-list{display:grid;gap:13px;}
@@ -612,6 +614,7 @@ tbody td:last-child{font-weight:700;color:var(--accent);white-space:nowrap;}
   .section{padding:66px 0;}
   .section-head{margin-bottom:36px;}
   .hero-inner,.phero-inner,.split,.charts,.contact-grid{grid-template-columns:1fr;}
+  .split.split--3{grid-template-columns:repeat(2,1fr);}
   .hero-inner{padding-block:60px 66px;}
   .phero-inner{padding-block:58px;}
   .hero-art{max-width:420px;margin-inline:auto; width: 100%}
@@ -632,6 +635,15 @@ tbody td:last-child{font-weight:700;color:var(--accent);white-space:nowrap;}
     display:none;
   }
   .nav-links[data-open="true"]{display:flex;}
+  .nav-backdrop{
+    display:block;
+    position:fixed;top:64px;left:0;right:0;bottom:0;
+    background:rgba(15,28,46,.45);
+    z-index:40;
+    opacity:0;pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .nav-backdrop[data-open="true"]{opacity:1;pointer-events:auto;}
   .nav-links a{padding:12px 14px;}
   .nav-links a.nav-cta{margin-left:0;margin-top:6px;text-align:center;}
 
@@ -661,6 +673,7 @@ tbody td:last-child{font-weight:700;color:var(--accent);white-space:nowrap;}
   .section-head{margin-bottom:28px;}
   .products,.products.products--4,.features,.func-grid,.func-grid.func-grid--5,
   .ind-list,.ind-list.cols,.checklist,.compo,.compo.compo--3,
+  .split.split--3,
   .footer-top{grid-template-columns:1fr;}
 
   /* hero / hero продукта */
@@ -719,7 +732,7 @@ tbody td:last-child{font-weight:700;color:var(--accent);white-space:nowrap;}
 
 /* --- Узкие смартфоны --- */
 @media (max-width:400px){
-  .container{padding:0 13px;}
+  .container{padding:13px;}
   .section{padding:40px 0;}
   .pack,.info-card,.chart-card,.feature,.func{padding:18px 15px;}
   .logo{font-size:1.04rem;}

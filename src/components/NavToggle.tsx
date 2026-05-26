@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import type { ActivePage, Product } from '../types/product';
 
 interface Props {
@@ -17,6 +18,20 @@ interface Props {
 export default function NavToggle({ products, active }: Props) {
   const [open, setOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  // Lock body scroll while the mobile menu is open so the page underneath
+  // doesn't scroll when the user swipes on the backdrop or the menu panel.
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   const productsActive =
     active === 'products' || products.some((p) => p.slug === active);
@@ -40,6 +55,16 @@ export default function NavToggle({ products, active }: Props) {
       >
         <span />
       </button>
+      {mounted &&
+        createPortal(
+          <div
+            className="nav-backdrop"
+            data-open={open}
+            aria-hidden="true"
+            onClick={closeAll}
+          />,
+          document.body,
+        )}
       <nav className="nav-links" data-open={open}>
         <a href="/" className={linkClass('home')} onClick={closeAll}>
           Главная
