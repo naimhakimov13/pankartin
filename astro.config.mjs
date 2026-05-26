@@ -6,6 +6,6 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pankartin.vercel.app',
+  site: 'http://178.105.17.88',
   integrations: [react(), icon()],
 });
