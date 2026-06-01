@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -13,7 +13,7 @@ import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'oleopan')!;
 const description = "OleoPan — две активные формы магния (бисглицинат и цитрат) с витамином B6. Восполняет дефицит магния, снижает тревожность, поддерживает нервную и сердечно-сосудистую системы.";
@@ -26,7 +26,7 @@ const description = "OleoPan — две активные формы магния
   description={description}
   image="/oleopan.jpeg"
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}

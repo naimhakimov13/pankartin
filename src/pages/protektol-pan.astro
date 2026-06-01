@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -13,7 +13,7 @@ import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'protektol-pan')!;
 const description = "Protektol-Pan — индол-3-карбинол 500 мг + катехины зелёного чая (EGCG) и эссенциальные фосфолипиды. Поддержка гормонального баланса, онкопротекция, защита репродуктивных органов у мужчин и женщин.";
@@ -26,7 +26,7 @@ const description = "Protektol-Pan — индол-3-карбинол 500 мг + 
   description={description}
   image="/protektol-pan.jpeg"
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}

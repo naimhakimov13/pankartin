@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -11,7 +11,7 @@ import IndList from '../components/IndList.astro';
 import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pan-sedil')!;
 const description = "Pan-Sedil — мягкое успокаивающее средство на растительной основе с L-триптофаном, магнием и витамином B6. При нарушениях сна, неврозах и стрессе. Не вызывает привыкания.";
@@ -23,7 +23,7 @@ const description = "Pan-Sedil — мягкое успокаивающее ср�
   title="Pan-Sedil — пассифлора, мелисса и боярышник для сна и спокойствия | PanPharm"
   description={description}
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}

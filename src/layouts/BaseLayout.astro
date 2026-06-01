@@ -18,8 +18,8 @@ interface Props {
   image?: string;
   /** og:type — "website" for home/landing, "article" for product detail pages. */
   ogType?: 'website' | 'article';
-  /** Schema.org JSON-LD object (Organization, Product, etc.) — emitted as <script type="application/ld+json"> */
-  schema?: Record<string, unknown>;
+  /** Schema.org JSON-LD — один объект или массив объектов (Organization, DietarySupplement, BreadcrumbList…). Каждый эмитится отдельным <script type="application/ld+json">. */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -89,9 +89,9 @@ const locale = 'ru_RU';
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    {schema && (
-      <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
-    )}
+    {schema && (Array.isArray(schema) ? schema : [schema]).map((s) => (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(s)} />
+    ))}
   </head>
   <body class={theme}>
     <Header active={active} />

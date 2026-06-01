@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -14,7 +14,7 @@ import IndList from '../components/IndList.astro';
 import BarChart from '../components/BarChart.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pankartin')!;
 const description = "PanKartin — сироп с L-карнитином, коэнзимом Q10 и витамином B12 для энергии, роста и развития ребёнка. Состав, показания, дозировка.";
@@ -27,7 +27,7 @@ const description = "PanKartin — сироп с L-карнитином, коэ�
   description={description}
   image="/pankartin.jpeg"
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}

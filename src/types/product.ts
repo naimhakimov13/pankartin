@@ -49,6 +49,12 @@ export interface Product {
   summary: string;
   /** 4 lines rendered inside the card's <ul> */
   bullets: string[];
+  /** Действующие вещества (для JSON-LD DietarySupplement). Имя + дозировка. */
+  activeIngredients?: { name: string; amount?: string }[];
+  /** Форма выпуска, напр. «сироп», «капсулы», «капли», «таблетки», «саше». */
+  dosageForm?: string;
+  /** Объём/количество в упаковке, напр. «150 мл», «60 таблеток». */
+  servingSize?: string;
 }
 
 /** Accepts a product slug or one of the static page identifiers */

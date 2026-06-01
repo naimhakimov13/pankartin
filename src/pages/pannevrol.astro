@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -14,7 +14,7 @@ import InfoCard from '../components/InfoCard.astro';
 import DataTable from '../components/DataTable.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pannevrol')!;
 const description = "Pannevrol — комплекс с цитиколином, гинкго билоба, фосфолипидами и витаминами группы B. Восстанавливает миелиновую оболочку, улучшает память и концентрацию, поддерживает психоэмоциональный статус.";
@@ -27,7 +27,7 @@ const description = "Pannevrol — комплекс с цитиколином, �
   description={description}
   image="/pannevrol.jpeg"
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}

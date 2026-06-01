@@ -17,6 +17,22 @@ const organizationSchema = {
   logo: new URL('/logo.png', Astro.site).toString(),
   description:
     'PanPharm — эксклюзивный дистрибьютор препаратов для здоровья всей семьи: суставы, энергия, развитие мозга, беременность.',
+  email: 'info@panpharm.uz',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Ташкент',
+    addressCountry: 'UZ',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'info@panpharm.uz',
+    contactType: 'customer service',
+    areaServed: 'UZ',
+    availableLanguage: ['ru', 'uz'],
+    // TODO: добавить telephone, когда появится реальный номер
+    //       (на сайте сейчас заглушка +998 (__) ___-__-__).
+  },
+  // TODO: ссылки на соцсети (Instagram/Telegram/Facebook), когда появятся.
   sameAs: [] as string[],
 };
 ---

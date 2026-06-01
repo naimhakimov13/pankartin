@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -12,7 +12,7 @@ import IndList from '../components/IndList.astro';
 import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pansist')!;
 const description = "Pansist — D-манноза 200 мг + экстракт клюквы 250 мг в одной капсуле. Борьба с урологическими инфекциями, профилактика рецидивов цистита, безопасно при беременности.";
@@ -24,7 +24,7 @@ const description = "Pansist — D-манноза 200 мг + экстракт к
   title="Pansist — D-манноза и экстракт клюквы для здоровья мочевыводящих путей | PanPharm"
   description={description}
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}

@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -14,7 +14,7 @@ import Split from '../components/Split.astro';
 import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pan-bio')!;
 const description = "Pan-Bio — синбиотик: Bifidobacterium BB-12, Lactobacillus rhamnosus GG и L. acidophilus с инулином. Лечение и профилактика дисбактериоза, поддержка при антибиотикотерапии. Для всей семьи с 2 лет.";
@@ -27,7 +27,7 @@ const description = "Pan-Bio — синбиотик: Bifidobacterium BB-12, Lact
   description={description}
   image="/pan-bio.jpeg"
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}

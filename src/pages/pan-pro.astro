@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -13,7 +13,7 @@ import InfoCard from '../components/InfoCard.astro';
 import IndList from '../components/IndList.astro';
 import PieChart from '../components/PieChart.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'pan-pro')!;
 const description = "Pan Pro — глюкозамин, хондроитин, МСМ и коллаген для здоровья суставов и позвоночника. Состав, показания, режим дозирования.";
@@ -25,7 +25,7 @@ const description = "Pan Pro — глюкозамин, хондроитин, М�
   title="Pan Pro — комплекс для суставов и связок | PanPharm"
   description={description}
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}

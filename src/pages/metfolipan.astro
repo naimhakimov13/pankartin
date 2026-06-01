@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
 import PackCard from '../components/PackCard.astro';
@@ -14,7 +14,7 @@ import InfoCard from '../components/InfoCard.astro';
 import PromoBanner from '../components/PromoBanner.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { Icon } from 'astro-icon/components';
-import { products, buildProductSchema } from '../data/products';
+import { products, buildProductSchema, buildBreadcrumbSchema } from '../data/products';
 
 const product = products.find((p) => p.slug === 'metfolipan')!;
 const description = "MetfoliPan — активная форма фолиевой кислоты (метилфолат 400 мкг) с витаминами B6 и B12. Для женщин, планирующих беременность, при анемии и в косметологии.";
@@ -27,7 +27,7 @@ const description = "MetfoliPan — активная форма фолиевой
   description={description}
   image="/metfolipan.jpeg"
   ogType="article"
-  schema={buildProductSchema(product, Astro.site, description)}
+  schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
   <ProductHero
     product={product}
