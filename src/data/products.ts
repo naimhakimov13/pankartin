@@ -13,9 +13,11 @@ export function buildProductSchema(product: Product, site: URL | undefined, desc
     '@type': 'Product',
     name: product.name,
     description,
-    image: new URL(image, site).toString(),
+    image: [new URL(image, site).toString()],
     url: new URL(`/${product.slug}`, site).toString(),
     brand: { '@type': 'Brand', name: 'PanPharm' },
+    manufacturer: { '@type': 'Organization', name: 'PanPharm' },
+    countryOfOrigin: 'Узбекистан',
     category: product.tag,
   };
 }

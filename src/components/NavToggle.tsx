@@ -93,7 +93,7 @@ export default function NavToggle({ products, active }: Props) {
             {products.map((p) => (
               <a
                 key={p.slug}
-                href={`/${p.slug}`}
+                href={`/${p.slug}/`}
                 className={active === p.slug ? 'active' : undefined}
                 onClick={closeAll}
                 role="menuitem"

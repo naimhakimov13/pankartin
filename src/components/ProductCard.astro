@@ -16,7 +16,7 @@ const { product } = Astro.props;
     <ul>
       {product.bullets.map((line) => <li>{line}</li>)}
     </ul>
-    <a href={`/${product.slug}`} class="btn btn-primary">
+    <a href={`/${product.slug}/`} class="btn btn-primary">
       Подробнее о {product.name} →
     </a>
   </div>
