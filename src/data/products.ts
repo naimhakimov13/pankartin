@@ -6,36 +6,36 @@ const PRODUCT_IMAGES = new Set([
 ]);
 
 /**
- * Build a Schema.org DietarySupplement object suitable for JSON-LD.
- * DietarySupplement наследует от Product, поэтому brand/manufacturer/image
- * остаются валидными. Состав (activeIngredients) и форма выпуска
- * добавляются, если заданы в каталоге.
+ * Build a Schema.org MedicalWebPage object suitable for JSON-LD.
+ *
+ * Почему НЕ DietarySupplement/Product: рич-результат «товар» в Google требует
+ * один из offers / review / aggregateRating. У PanPharm нет онлайн-цен (только
+ * дистрибуция) и нет настоящих отзывов, поэтому помечать страницы товаром
+ * нельзя — иначе Rich Results Test выдаёт критичную ошибку. MedicalWebPage —
+ * корректный тип для информационной медицинской страницы, для него offers не
+ * требуется. Состав сохраняется как список Substance в `about`.
+ *
+ * Данные о составе (activeIngredients) и форме лежат в каталоге — если у бренда
+ * появятся фиксированные цены, можно вернуть DietarySupplement + offers.
  */
 export function buildProductSchema(product: Product, site: URL | undefined, description: string) {
   const image = PRODUCT_IMAGES.has(product.slug) ? `/${product.slug}.jpeg` : '/logo.png';
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': 'DietarySupplement',
+    '@type': 'MedicalWebPage',
     name: product.name,
     description,
-    image: [new URL(image, site).toString()],
     url: new URL(`/${product.slug}/`, site).toString(),
-    brand: { '@type': 'Brand', name: 'PanPharm' },
-    manufacturer: { '@type': 'Organization', name: 'PanPharm' },
-    countryOfOrigin: 'Узбекистан',
-    category: product.tag,
+    inLanguage: 'ru',
+    primaryImageOfPage: { '@type': 'ImageObject', url: new URL(image, site).toString() },
+    about: { '@type': 'Substance', name: product.name },
   };
 
   if (product.activeIngredients?.length) {
-    schema.activeIngredient = product.activeIngredients.map((i) => i.name);
-    schema.additionalProperty = product.activeIngredients.map((i) => ({
-      '@type': 'PropertyValue',
+    schema.mentions = product.activeIngredients.map((i) => ({
+      '@type': 'Substance',
       name: i.name,
-      value: i.amount ?? '',
     }));
-  }
-  if (product.dosageForm) {
-    schema.dosageForm = product.dosageForm;
   }
 
   return schema;
