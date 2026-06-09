@@ -46,6 +46,14 @@ const locale = 'ru_RU';
     <title>{title}</title>
     <meta name="description" content={description} />
 
+    <!-- Google Tag Manager -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KFPKVBHD');</script>
+    <!-- End Google Tag Manager -->
+
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-L0EQ5HRQFY"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -94,6 +102,10 @@ const locale = 'ru_RU';
     <meta name="google-site-verification" content="46hl0ZSSXMO-1PBU5gdo7fMdP1grsfTn_hFGSrzOo5Q" />
   </head>
   <body class={theme}>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFPKVBHD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <Header active={active} />
     <slot />
     <Disclaimer withSource={productDisclaimer} />
