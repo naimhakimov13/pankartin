@@ -7,6 +7,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pankartin.vercel.app',
+  site: 'https://pankartin.xyz',
   integrations: [react(), icon(), sitemap()],
 });

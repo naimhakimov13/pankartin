@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pankartin.vercel.app/sitemap-0.xml
+Sitemap: https://pankartin.xyz/sitemap-index.xml
