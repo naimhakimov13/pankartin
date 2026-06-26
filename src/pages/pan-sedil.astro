@@ -1,6 +1,7 @@
 ﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
+import PromoBanner from '../components/PromoBanner.astro';
 import PackCard from '../components/PackCard.astro';
 import Section from '../components/Section.astro';
 import SectionHead from '../components/SectionHead.astro';
@@ -22,6 +23,7 @@ const description = "Pan-Sedil — мягкое успокаивающее ср�
   productDisclaimer
   title="Pan-Sedil — пассифлора, мелисса и боярышник для сна и спокойствия | PanPharm"
   description={description}
+  image="/pan-sedil.jpeg"
   ogType="article"
   schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
@@ -48,6 +50,14 @@ const description = "Pan-Sedil — мягкое успокаивающее ср�
       formIcon="pill"
     />
   </ProductHero>
+
+  <PromoBanner
+    image="/pan-sedil.jpeg"
+    alt="Упаковка Pan-Sedil — 30 капсул"
+    eyebrow="Pan-Sedil"
+    title="Спокойствие, только спокойствие!"
+    description="Пассифлора, мелисса и боярышник с L-триптофаном, магнием и витамином B6 — мягкое успокаивающее действие и здоровый сон без привыкания."
+  />
 
   <Section>
     <SectionHead

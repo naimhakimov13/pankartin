@@ -1,6 +1,7 @@
 ﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
+import PromoBanner from '../components/PromoBanner.astro';
 import PackCard from '../components/PackCard.astro';
 import Section from '../components/Section.astro';
 import SectionHead from '../components/SectionHead.astro';
@@ -24,6 +25,7 @@ const description = "Pan Pro — глюкозамин, хондроитин, М�
   productDisclaimer
   title="Pan Pro — комплекс для суставов и связок | PanPharm"
   description={description}
+  image="/pan-pro.jpeg"
   ogType="article"
   schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
@@ -48,6 +50,14 @@ const description = "Pan Pro — глюкозамин, хондроитин, М�
       formIcon="package"
     />
   </ProductHero>
+
+  <PromoBanner
+    image="/pan-pro.jpeg"
+    alt="Упаковка Pan Pro — 60 таблеток"
+    eyebrow="Pan Pro"
+    title="Возвращаем радость движения"
+    description="Глюкозамин, хондроитин, МСМ и коллаген в одной таблетке — восполняют дефицит строительных элементов хряща и поддерживают подвижность суставов."
+  />
 
   <Section id="sostav">
     <SectionHead

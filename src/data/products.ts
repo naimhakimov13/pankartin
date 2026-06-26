@@ -3,6 +3,7 @@ import type { Product } from '../types/product';
 const PRODUCT_IMAGES = new Set([
   'pankartin', 'pano-pan-baby', 'metfolipan', 'oleopan', 'pan-bio',
   'pannevrol', 'pantoren', 'pantovit', 'panvit-mama', 'protektol-pan',
+  'pan-pro', 'pan-sedil', 'pansist',
 ]);
 
 /**

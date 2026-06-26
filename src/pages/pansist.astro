@@ -1,6 +1,7 @@
 ﻿---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductHero from '../components/ProductHero.astro';
+import PromoBanner from '../components/PromoBanner.astro';
 import PackCard from '../components/PackCard.astro';
 import Section from '../components/Section.astro';
 import SectionHead from '../components/SectionHead.astro';
@@ -23,6 +24,7 @@ const description = "Pansist — D-манноза 200 мг + экстракт к
   productDisclaimer
   title="Pansist — D-манноза и экстракт клюквы для здоровья мочевыводящих путей | PanPharm"
   description={description}
+  image="/pansist.jpeg"
   ogType="article"
   schema={[buildProductSchema(product, Astro.site, description), buildBreadcrumbSchema(product, Astro.site)]}
 >
@@ -45,6 +47,14 @@ const description = "Pansist — D-манноза 200 мг + экстракт к
       formIcon="pill"
     />
   </ProductHero>
+
+  <PromoBanner
+    image="/pansist.jpeg"
+    alt="Упаковка Pansist — D-манноза, 30 капсул"
+    eyebrow="Pansist"
+    title="Здоровье мочевыводящих путей"
+    description="D-манноза и экстракт клюквы в одной капсуле — блокируют прикрепление бактерий к слизистой и помогают в профилактике рецидивов цистита."
+  />
 
   <Section>
     <SectionHead
